@@ -141,10 +141,11 @@
         android:id="@+id/emotion_positive"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
         android:text="Positive"
         app:layout_constraintEnd_toStartOf="@+id/emotion_neutral"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="564dp" />
+        app:layout_constraintTop_toBottomOf="@+id/decision_game" />
 
     <Button
         android:id="@+id/emotion_neutral"
