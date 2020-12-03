@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
         android:layout_marginBottom="5dp"
-        android:text="Decision"
+        android:text="Decision Comment"
         app:layout_constraintBottom_toTopOf="@+id/input_decision"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -66,69 +66,104 @@
         app:layout_constraintTop_toBottomOf="@+id/input_decision" />
 
     <ImageButton
-        android:id="@+id/imageButton2"
+        android:id="@+id/decision_eat"
         android:layout_width="135dp"
         android:layout_height="76dp"
         android:layout_marginTop="15dp"
         android:backgroundTint="#00FFFFFF"
         android:scaleType="fitCenter"
+        app:layout_constraintEnd_toStartOf="@+id/decision_study"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/fast_pick_label"
-        app:srcCompat="@drawable/eat"
-        tools:layout_editor_absoluteX="1dp" />
+        app:srcCompat="@drawable/eat" />
 
     <ImageButton
-        android:id="@+id/imageButton3"
+        android:id="@+id/decision_study"
         android:layout_width="136dp"
         android:layout_height="74dp"
         android:backgroundTint="#00FFFFFF"
         android:scaleType="fitCenter"
-        app:layout_constraintBottom_toBottomOf="@+id/imageButton2"
-        app:layout_constraintTop_toTopOf="@+id/imageButton2"
-        app:srcCompat="@drawable/study"
-        tools:layout_editor_absoluteX="137dp" />
+        app:layout_constraintBottom_toBottomOf="@+id/decision_eat"
+        app:layout_constraintEnd_toStartOf="@+id/decision_shop"
+        app:layout_constraintStart_toEndOf="@+id/decision_eat"
+        app:layout_constraintTop_toTopOf="@+id/decision_eat"
+        app:srcCompat="@drawable/study" />
 
     <ImageButton
-        android:id="@+id/imageButton4"
+        android:id="@+id/decision_shop"
         android:layout_width="136dp"
         android:layout_height="67dp"
         android:backgroundTint="#00FFFFFF"
         android:scaleType="fitCenter"
-        app:layout_constraintBottom_toBottomOf="@+id/imageButton3"
-        app:layout_constraintTop_toTopOf="@+id/imageButton3"
-        app:srcCompat="@drawable/shop"
-        tools:layout_editor_absoluteX="274dp" />
+        app:layout_constraintBottom_toBottomOf="@+id/decision_study"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/decision_study"
+        app:layout_constraintTop_toTopOf="@+id/decision_study"
+        app:srcCompat="@drawable/shop" />
 
     <ImageButton
-        android:id="@+id/imageButton5"
+        android:id="@+id/decision_game"
         android:layout_width="135dp"
         android:layout_height="72dp"
         android:layout_marginTop="15dp"
         android:backgroundTint="#00FFFFFF"
         android:scaleType="fitCenter"
-        app:layout_constraintTop_toBottomOf="@+id/imageButton2"
-        app:srcCompat="@drawable/game"
-        tools:layout_editor_absoluteX="1dp" />
+        app:layout_constraintEnd_toStartOf="@+id/decision_music"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/decision_eat"
+        app:srcCompat="@drawable/game" />
 
     <ImageButton
-        android:id="@+id/imageButton6"
+        android:id="@+id/decision_music"
         android:layout_width="136dp"
         android:layout_height="93dp"
         android:backgroundTint="#00FFFFFF"
         android:scaleType="fitCenter"
-        app:layout_constraintBottom_toBottomOf="@+id/imageButton5"
-        app:layout_constraintTop_toTopOf="@+id/imageButton5"
-        app:srcCompat="@drawable/entertain"
-        tools:layout_editor_absoluteX="137dp" />
+        app:layout_constraintBottom_toBottomOf="@+id/decision_game"
+        app:layout_constraintEnd_toStartOf="@+id/decision_workout"
+        app:layout_constraintStart_toEndOf="@+id/decision_game"
+        app:layout_constraintTop_toTopOf="@+id/decision_game"
+        app:srcCompat="@drawable/entertain" />
 
     <ImageButton
-        android:id="@+id/imageButton7"
+        android:id="@+id/decision_workout"
         android:layout_width="136dp"
         android:layout_height="80dp"
         android:backgroundTint="#00FFFFFF"
         android:scaleType="fitCenter"
-        app:layout_constraintBottom_toBottomOf="@+id/imageButton6"
-        app:layout_constraintTop_toTopOf="@+id/imageButton6"
-        app:srcCompat="@drawable/workout"
-        tools:layout_editor_absoluteX="274dp" />
+        app:layout_constraintBottom_toBottomOf="@+id/decision_music"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/decision_music"
+        app:layout_constraintTop_toTopOf="@+id/decision_music"
+        app:srcCompat="@drawable/workout" />
+
+    <Button
+        android:id="@+id/emotion_positive"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Positive"
+        app:layout_constraintEnd_toStartOf="@+id/emotion_neutral"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="564dp" />
+
+    <Button
+        android:id="@+id/emotion_neutral"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Neutral"
+        app:layout_constraintBottom_toBottomOf="@+id/emotion_positive"
+        app:layout_constraintEnd_toStartOf="@+id/emotion_negative"
+        app:layout_constraintStart_toEndOf="@+id/emotion_positive"
+        app:layout_constraintTop_toTopOf="@+id/emotion_positive" />
+
+    <Button
+        android:id="@+id/emotion_negative"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Negative"
+        app:layout_constraintBottom_toBottomOf="@+id/emotion_neutral"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/emotion_neutral"
+        app:layout_constraintTop_toTopOf="@+id/emotion_neutral" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
