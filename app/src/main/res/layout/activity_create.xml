@@ -12,7 +12,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
-        android:layout_marginBottom="5dp"
+        android:layout_marginBottom="1dp"
         android:text="Decision Comment"
         app:layout_constraintBottom_toTopOf="@+id/input_decision"
         app:layout_constraintStart_toStartOf="parent" />
@@ -30,8 +30,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.32999998" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/cat_dialog"
@@ -46,11 +45,10 @@
 
     <ImageView
         android:id="@+id/cat_icon"
-        android:layout_width="0dp"
+        android:layout_width="200dp"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/input_decision"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.67"
+        android:layout_marginBottom="5dp"
+        app:layout_constraintBottom_toTopOf="@+id/decision_title"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cat_dialog"
         app:srcCompat="@drawable/cat" />
@@ -60,16 +58,16 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="5dp"
         android:text="Pick your decision"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/input_decision" />
 
     <ImageButton
         android:id="@+id/decision_eat"
-        android:layout_width="135dp"
-        android:layout_height="76dp"
-        android:layout_marginTop="15dp"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="5dp"
         android:backgroundTint="#00FFFFFF"
         android:scaleType="fitCenter"
         app:layout_constraintEnd_toStartOf="@+id/decision_study"
@@ -79,8 +77,8 @@
 
     <ImageButton
         android:id="@+id/decision_study"
-        android:layout_width="136dp"
-        android:layout_height="74dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:backgroundTint="#00FFFFFF"
         android:scaleType="fitCenter"
         app:layout_constraintBottom_toBottomOf="@+id/decision_eat"
@@ -91,8 +89,8 @@
 
     <ImageButton
         android:id="@+id/decision_shop"
-        android:layout_width="136dp"
-        android:layout_height="67dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:backgroundTint="#00FFFFFF"
         android:scaleType="fitCenter"
         app:layout_constraintBottom_toBottomOf="@+id/decision_study"
@@ -103,9 +101,9 @@
 
     <ImageButton
         android:id="@+id/decision_game"
-        android:layout_width="135dp"
-        android:layout_height="72dp"
-        android:layout_marginTop="15dp"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="5dp"
         android:backgroundTint="#00FFFFFF"
         android:scaleType="fitCenter"
         app:layout_constraintEnd_toStartOf="@+id/decision_music"
@@ -115,8 +113,8 @@
 
     <ImageButton
         android:id="@+id/decision_music"
-        android:layout_width="136dp"
-        android:layout_height="93dp"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
         android:backgroundTint="#00FFFFFF"
         android:scaleType="fitCenter"
         app:layout_constraintBottom_toBottomOf="@+id/decision_game"
@@ -127,8 +125,8 @@
 
     <ImageButton
         android:id="@+id/decision_workout"
-        android:layout_width="136dp"
-        android:layout_height="80dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:backgroundTint="#00FFFFFF"
         android:scaleType="fitCenter"
         app:layout_constraintBottom_toBottomOf="@+id/decision_music"
@@ -141,40 +139,35 @@
         android:id="@+id/emotion_positive"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
         android:text="Positive"
-        app:layout_constraintEnd_toStartOf="@+id/emotion_neutral"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/decision_game" />
+        app:layout_constraintEnd_toEndOf="@+id/emotion_neutral"
+        app:layout_constraintTop_toTopOf="@+id/cat_dialog" />
 
     <Button
         android:id="@+id/emotion_neutral"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Neutral"
-        app:layout_constraintBottom_toBottomOf="@+id/emotion_positive"
-        app:layout_constraintEnd_toStartOf="@+id/emotion_negative"
-        app:layout_constraintStart_toEndOf="@+id/emotion_positive"
-        app:layout_constraintTop_toTopOf="@+id/emotion_positive" />
+        app:layout_constraintBottom_toTopOf="@+id/emotion_negative"
+        app:layout_constraintEnd_toStartOf="@+id/decision_add"
+        app:layout_constraintStart_toEndOf="@+id/cat_icon"
+        app:layout_constraintTop_toBottomOf="@+id/emotion_positive" />
 
     <Button
         android:id="@+id/emotion_negative"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Negative"
-        app:layout_constraintBottom_toBottomOf="@+id/emotion_neutral"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/emotion_neutral"
-        app:layout_constraintTop_toTopOf="@+id/emotion_neutral" />
+        app:layout_constraintBottom_toTopOf="@+id/input_decision"
+        app:layout_constraintEnd_toEndOf="@+id/emotion_neutral" />
 
     <Button
         android:id="@+id/decision_add"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Add"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/emotion_neutral" />
+        app:layout_constraintStart_toEndOf="@+id/emotion_neutral"
+        app:layout_constraintTop_toTopOf="@+id/emotion_neutral" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
