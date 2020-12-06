@@ -1,5 +1,6 @@
 package edu.neu.madcourse.decisionjournal.dao;
 
+import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
@@ -16,11 +17,14 @@ public interface RecordDao {
     List<Record> getAll();
 
     @Query("SELECT * FROM records WHERE date LIKE :date")
-    List<Record> getRecordByDate(Date date);
+    LiveData<List<Record>> getRecordByDate(Date date);
 
     @Insert
     void insert(Record record);
 
     @Delete
     void delete(Record record);
+
+    @Query("DELETE FROM records")
+    void deleteAll();
 }
