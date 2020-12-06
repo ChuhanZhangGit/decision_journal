@@ -137,16 +137,21 @@
 
     <Button
         android:id="@+id/emotion_positive"
+        style="@android:style/Widget.Material.Button.Colored"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:backgroundTint="#40C4FF"
         android:text="Positive"
         app:layout_constraintEnd_toEndOf="@+id/emotion_neutral"
+        app:layout_constraintStart_toStartOf="@+id/emotion_neutral"
         app:layout_constraintTop_toTopOf="@+id/cat_dialog" />
 
     <Button
         android:id="@+id/emotion_neutral"
+        style="@android:style/Widget.Material.Button.Colored"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:backgroundTint="#69F0AE"
         android:text="Neutral"
         app:layout_constraintBottom_toTopOf="@+id/emotion_negative"
         app:layout_constraintEnd_toStartOf="@+id/decision_add"
@@ -155,16 +160,21 @@
 
     <Button
         android:id="@+id/emotion_negative"
+        style="@android:style/Widget.Material.Button.Colored"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:backgroundTint="#E040FB"
         android:text="Negative"
         app:layout_constraintBottom_toTopOf="@+id/input_decision"
         app:layout_constraintEnd_toEndOf="@+id/emotion_neutral" />
 
     <Button
         android:id="@+id/decision_add"
+        style="@android:style/Widget.Material.Button.Colored"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+
+        android:background="#EC407A"
         android:text="Add"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/emotion_neutral"
