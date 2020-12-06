@@ -4,6 +4,9 @@ import androidx.room.TypeConverter;
 
 import java.sql.Date;
 
+/**
+ * Converter class is to convert complex types or class to types room persistence library can store.
+ */
 public class Converters {
     @TypeConverter
     public static Date fromTimestamp(Long value) {
