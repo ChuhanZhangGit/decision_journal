@@ -12,11 +12,10 @@ import java.util.concurrent.Executors;
 
 import edu.neu.madcourse.decisionjournal.dao.RecordDao;
 import edu.neu.madcourse.decisionjournal.model.Converters;
-import edu.neu.madcourse.decisionjournal.model.Decision;
-import edu.neu.madcourse.decisionjournal.model.Emotion;
+
 import edu.neu.madcourse.decisionjournal.model.Record;
 
-@Database(entities = {Record.class, Decision.class, Emotion.class}, version = 1)
+@Database(entities = {Record.class}, version = 1)
 @TypeConverters({Converters.class})
 public abstract class AppDatabase extends RoomDatabase {
     public abstract RecordDao recordDao();

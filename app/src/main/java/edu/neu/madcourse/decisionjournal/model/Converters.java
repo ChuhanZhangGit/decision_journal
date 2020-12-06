@@ -15,4 +15,24 @@ public class Converters {
         return date == null ? null : date.getTime();
     }
 
+    @TypeConverter
+    public static int emoToVal(EmoEnum emotion) {
+        return emotion.getVal();
+    }
+
+    @TypeConverter
+    public static  EmoEnum valToEmo(int val) {
+        return EmoEnum.intToEmo(val);
+    }
+
+    @TypeConverter
+    public static int desToVal(DecisionEnum decisionEnum) {
+        return decisionEnum.getVal();
+    }
+
+    @TypeConverter
+    public static DecisionEnum valToDes(int val) {
+        return DecisionEnum.intToDecision(val);
+    }
+
 }
