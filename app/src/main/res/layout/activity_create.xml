@@ -139,6 +139,7 @@
         android:id="@+id/emotion_positive"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:onClick="emotionOnClick"
         android:text="Positive"
         app:layout_constraintEnd_toEndOf="@+id/emotion_neutral"
         app:layout_constraintTop_toTopOf="@+id/cat_dialog" />
@@ -147,6 +148,7 @@
         android:id="@+id/emotion_neutral"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:onClick="emotionOnClick"
         android:text="Neutral"
         app:layout_constraintBottom_toTopOf="@+id/emotion_negative"
         app:layout_constraintEnd_toStartOf="@+id/decision_add"
@@ -157,6 +159,7 @@
         android:id="@+id/emotion_negative"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:onClick="emotionOnClick"
         android:text="Negative"
         app:layout_constraintBottom_toTopOf="@+id/input_decision"
         app:layout_constraintEnd_toEndOf="@+id/emotion_neutral" />

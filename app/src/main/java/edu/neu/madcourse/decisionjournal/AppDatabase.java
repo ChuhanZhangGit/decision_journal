@@ -58,7 +58,7 @@ public abstract class AppDatabase extends RoomDatabase {
 //                dao.deleteAll();
 
                 // Can Prepopulate database below.
-                INSTANCE.recordDao().insert(new Record(DecisionEnum.WORKOUT, EmoEnum.HAPPY, test_date));
+//                INSTANCE.recordDao().insert(new Record(DecisionEnum.WORKOUT, EmoEnum.HAPPY, test_date));
 
             });
         }
