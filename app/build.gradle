@@ -31,6 +31,10 @@ android {
     }
 }
 
+repositories {
+    maven { url 'https://jitpack.io' }
+}
+
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation 'androidx.appcompat:appcompat:1.2.0'
@@ -54,5 +58,6 @@ dependencies {
     // Github: https://github.com/amitshekhariitbhu/Android-Debug-Database
     debugImplementation 'com.amitshekhar.android:debug-db:1.0.6'
 
-
+    // for plot
+    implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
 }
