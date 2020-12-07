@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.CalendarView;
 import android.widget.LinearLayout;
@@ -12,7 +13,9 @@ import android.widget.TextView;
 
 import com.google.android.material.appbar.AppBarLayout;
 
+import java.time.Instant;
 import java.time.LocalDate;
+import java.time.ZoneId;
 
 
 /**
@@ -26,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
     private CalendarView calendarView;
     boolean appbarExpanded = false;
 
-    private LocalDate selectedDate;
+    private LocalDate selectedDate = LocalDate.now();
     private TextView selectedDateTextView;
 
     @Override
@@ -44,9 +47,9 @@ public class MainActivity extends AppCompatActivity {
         appBarLayout.setExpanded(appbarExpanded);
 
         setupCalendarListener();
-        // Initial calendar view to select today's date.
-        calendarView.setDate(0);
-        calendarView.setDate(System.currentTimeMillis());
+        // Initialize text view to select today's date. Calendarview by default initialize to today's
+        // date.
+        setToolbarDate();
     }
 
     private void setupCalendarListener() {
@@ -55,6 +58,9 @@ public class MainActivity extends AppCompatActivity {
             public void onSelectedDayChange(@NonNull CalendarView calendarView, int i, int i1, int i2) {
                 selectedDate = LocalDate.of(i, i1+1, i2);
                 setToolbarDate();
+                // calendarview's date wont change upon date selection, only this listener is called.
+//                LocalDate newDate = Instant.ofEpochMilli(calendarView.getDate()).atZone(ZoneId.systemDefault()).toLocalDate();
+//                Log.i(TAG, String.format("in date listener, new date: %s", newDate.toString()));
             }
         });
     }
