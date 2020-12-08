@@ -16,8 +16,9 @@ public interface RecordDao {
     @Query("SELECT * FROM records")
     List<Record> getAll();
 
-    @Query("SELECT * FROM records WHERE date LIKE :date")
-    LiveData<List<Record>> getRecordByDate(Date date);
+    // Date has long value, get record of one day, need to retrieve records from day start time to day end time.
+    @Query("SELECT * FROM records WHERE date BETWEEN :dayStart AND :dayEnd")
+    LiveData<List<Record>> getRecordBetweenDate(Date dayStart, Date dayEnd);
 
     @Insert
     void insert(Record record);
@@ -27,4 +28,7 @@ public interface RecordDao {
 
     @Query("DELETE FROM records")
     void deleteAll();
+
+    @Query("SELECT * FROM records WHERE date BETWEEN :dayStart AND :dayEnd")
+    List<Record> getRecordBetweenDateTest(Date dayStart, Date dayEnd);
 }
