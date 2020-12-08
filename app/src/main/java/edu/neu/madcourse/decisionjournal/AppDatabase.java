@@ -25,9 +25,10 @@ import edu.neu.madcourse.decisionjournal.model.Record;
 @TypeConverters({Converters.class})
 public abstract class AppDatabase extends RoomDatabase {
     public abstract RecordDao recordDao();
+
     private static volatile AppDatabase INSTANCE;
     private static final int NUMBER_OF_THREADS = 4;
-    private static Date test_date = Date.valueOf(LocalDate.of(1999, 01,01).toString());
+    private static Date test_date = Date.valueOf(LocalDate.of(1999, 01, 01).toString());
 
     public static final ExecutorService executor =
             Executors.newFixedThreadPool(NUMBER_OF_THREADS);
@@ -59,8 +60,20 @@ public abstract class AppDatabase extends RoomDatabase {
 
                 // Can Prepopulate database below.
 //                INSTANCE.recordDao().insert(new Record(DecisionEnum.WORKOUT, EmoEnum.HAPPY, test_date));
-
+                prePopuplate();
             });
         }
     };
+
+    private static void prePopuplate() {
+        INSTANCE.recordDao().insert(new Record(DecisionEnum.EAT, EmoEnum.HAPPY,
+                Date.valueOf(LocalDate.of(2020, 12, 2).toString())));
+        INSTANCE.recordDao().insert(new Record(DecisionEnum.EAT, EmoEnum.NEUTRAL,
+                Date.valueOf(LocalDate.of(2020, 12, 2).toString())));
+        INSTANCE.recordDao().insert(new Record(DecisionEnum.STUDY, EmoEnum.SAD,
+                Date.valueOf(LocalDate.of(2020, 12, 4).toString())));
+        INSTANCE.recordDao().insert(new Record(DecisionEnum.STUDY, EmoEnum.HAPPY,
+                Date.valueOf(LocalDate.of(2020, 12, 6).toString())));
+
+    }
 }
