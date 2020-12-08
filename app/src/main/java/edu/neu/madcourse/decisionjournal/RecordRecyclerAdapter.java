@@ -1,5 +1,6 @@
 package edu.neu.madcourse.decisionjournal;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,7 +19,7 @@ import edu.neu.madcourse.decisionjournal.model.Record;
 public class RecordRecyclerAdapter extends RecyclerView.Adapter<RecordRecyclerAdapter.RecordViewHolder> {
 
     private List<Record> recordList;
-
+    private final String TAG = RecordRecyclerAdapter.class.getSimpleName();
 
     public RecordRecyclerAdapter() {
         this.recordList = new ArrayList<>();
@@ -41,10 +42,11 @@ public class RecordRecyclerAdapter extends RecyclerView.Adapter<RecordRecyclerAd
 
     @Override
     public int getItemCount() {
-        return 0;
+        return recordList.size();
     }
 
     public void submitList(List<Record> data) {
+        Log.i(TAG, String.format("submit list data size: %d", data.size()));
         if (data != null) {
             recordList.clear();
             recordList.addAll(data);
