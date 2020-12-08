@@ -139,9 +139,12 @@
 
     <Button
         android:id="@+id/decision_add"
+        style="@android:style/Widget.Material.Button.Colored"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="#EC407A"
         android:text="Add"
+
         app:layout_constraintBottom_toTopOf="@+id/input_decision"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/radioGroup2"
@@ -149,8 +152,8 @@
 
     <RadioGroup
         android:id="@+id/radioGroup2"
-        android:layout_width="92dp"
-        android:layout_height="225dp"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
         android:layout_marginTop="5dp"
         app:layout_constraintBottom_toTopOf="@+id/input_decision"
         app:layout_constraintEnd_toStartOf="@+id/decision_add"
@@ -165,30 +168,43 @@
             android:layout_marginTop="5dp"
             android:layout_marginBottom="5dp"
             android:layout_weight="1"
-            android:background="#40C4FF"
-            android:text="Positive" />
+            android:background="@drawable/shape_positive"
+            android:buttonTint="#FFFFFF"
+            android:paddingEnd="5dp"
+            android:text="Positive"
+            android:textAllCaps="true"
+            android:textColor="#FFFFFF" />
 
         <RadioButton
             android:id="@+id/emotion_neutral"
 
+            style="@android:style/Widget.Material.Light.CompoundButton.RadioButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:layout_marginBottom="5dp"
             android:layout_weight="1"
-            android:background="#69F0AE"
-            android:text="Neutral" />
+            android:background="@drawable/shape_neutral"
+            android:buttonTint="#FFFFFF"
+            android:paddingEnd="5dp"
+            android:text="Neutral"
+            android:textAllCaps="true"
+            android:textColor="#FFFFFF" />
 
         <RadioButton
             android:id="@+id/emotion_negative"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
 
             android:layout_marginTop="5dp"
             android:layout_marginBottom="5dp"
             android:layout_weight="1"
-            android:background="#E040FB"
-            android:text="Negative" />
+            android:background="@drawable/shape_negative"
+            android:buttonTint="#FFFFFF"
+            android:paddingEnd="5dp"
+            android:text="Negative"
+            android:textAllCaps="true"
+            android:textColor="#FFFFFF" />
     </RadioGroup>
 
     <RadioGroup
