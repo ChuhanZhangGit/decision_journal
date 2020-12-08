@@ -141,42 +141,53 @@
         android:id="@+id/decision_add"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
         android:text="Add"
         app:layout_constraintBottom_toTopOf="@+id/input_decision"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toEndOf="@+id/radioGroup2"
+        app:layout_constraintTop_toTopOf="@+id/radioGroup2" />
 
     <RadioGroup
+        android:id="@+id/radioGroup2"
         android:layout_width="92dp"
         android:layout_height="225dp"
+        android:layout_marginTop="5dp"
         app:layout_constraintBottom_toTopOf="@+id/input_decision"
         app:layout_constraintEnd_toStartOf="@+id/decision_add"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/cat_icon"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="@+id/cat_dialog">
 
         <RadioButton
             android:id="@+id/emotion_positive"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
             android:layout_weight="1"
+            android:background="#40C4FF"
             android:text="Positive" />
 
         <RadioButton
             android:id="@+id/emotion_neutral"
 
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
             android:layout_weight="1"
+            android:background="#69F0AE"
             android:text="Neutral" />
 
         <RadioButton
             android:id="@+id/emotion_negative"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
 
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
             android:layout_weight="1"
+            android:background="#E040FB"
             android:text="Negative" />
     </RadioGroup>
 
