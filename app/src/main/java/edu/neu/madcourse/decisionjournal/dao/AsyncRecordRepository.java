@@ -5,6 +5,8 @@ import android.content.Context;
 import androidx.lifecycle.LiveData;
 
 import java.sql.Date;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 import edu.neu.madcourse.decisionjournal.AppDatabase;
@@ -34,8 +36,16 @@ public class AsyncRecordRepository {
 //    }
 
     public LiveData<List<Record>> getRecordOnDate(Date date) {
-        return recordDao.getRecordByDate(date);
+
+        DateFormat format = DateFormat.getDateInstance();
+        String dateOnly = format.format(date);
+        Date dayStart = Date.valueOf(dateOnly);
+        // hard coded day end in millisecond
+        Date dayEnd = new Date(dayStart.getTime() + 24*60*60*1000 -1);
+        return recordDao.getRecordBetweenDate(dayStart, dayEnd);
     }
+
+
 
 
     public void insert(Record record) {
