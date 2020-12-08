@@ -72,4 +72,16 @@
     </com.google.android.material.appbar.AppBarLayout>
 
 
+
+    <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/record_recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:background="@android:color/background_light"
+            android:padding="5dp" />
+
+
+
+
+
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

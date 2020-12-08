@@ -3,6 +3,8 @@ package edu.neu.madcourse.decisionjournal;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.lifecycle.Observer;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.util.Log;
@@ -13,9 +15,14 @@ import android.widget.TextView;
 
 import com.google.android.material.appbar.AppBarLayout;
 
+import java.sql.Date;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.ZoneId;
+import java.util.List;
+
+import edu.neu.madcourse.decisionjournal.dao.AsyncRecordRepository;
+import edu.neu.madcourse.decisionjournal.model.Record;
 
 
 /**
@@ -23,7 +30,6 @@ import java.time.ZoneId;
  */
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = MainActivity.class.getSimpleName();
-    private AppDatabase database;
     private LinearLayout pickDateArea;
     private AppBarLayout appBarLayout;
     private CalendarView calendarView;
@@ -31,12 +37,15 @@ public class MainActivity extends AppCompatActivity {
 
     private LocalDate selectedDate = LocalDate.now();
     private TextView selectedDateTextView;
+    private RecyclerView recordRecyclerView;
+    private RecordRecyclerAdapter recordRecyclerAdapter;
+
+    private AsyncRecordRepository recordRepository;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        database = AppDatabase.getDatabase(getApplicationContext());
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -45,11 +54,25 @@ public class MainActivity extends AppCompatActivity {
         calendarView = findViewById(R.id.calendar_view);
         selectedDateTextView = findViewById(R.id.toolbar_date_display);
         appBarLayout.setExpanded(appbarExpanded);
+        recordRecyclerView = findViewById(R.id.record_recycler_view);
+
+        recordRepository = new AsyncRecordRepository(getApplicationContext());
 
         setupCalendarListener();
         // Initialize text view to select today's date. Calendarview by default initialize to today's
         // date.
         setToolbarDate();
+        setUpRecyclerView();
+    }
+
+    private void setUpRecyclerView() {
+        recordRecyclerAdapter = new RecordRecyclerAdapter();
+        recordRecyclerView.setAdapter(recordRecyclerAdapter);
+        Date currDate = Date.valueOf(selectedDate.toString());
+        recordRepository.getRecordOnDate(currDate).observe(this, records -> {
+            recordRecyclerAdapter.submitList(records);
+        });
+
     }
 
     private void setupCalendarListener() {
