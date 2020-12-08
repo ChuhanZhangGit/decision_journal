@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:state_checked="false">
+        <layer-list>
+            <item android:width="@dimen/decision_btn_dimen" android:height="@dimen/decision_btn_dimen" android:drawable="@drawable/workout" android:gravity="center" />
+        </layer-list>
+    </item>
+    <item android:state_checked="true">
+        <layer-list>
+            <item android:drawable="@android:color/holo_purple" />
+            <item android:width="@dimen/decision_btn_dimen" android:height="@dimen/decision_btn_dimen" android:drawable="@drawable/workout" android:gravity="center" />
+        </layer-list>
+    </item>
+</selector>
