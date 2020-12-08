@@ -139,150 +139,174 @@
 
     <Button
         android:id="@+id/decision_add"
+        style="@android:style/Widget.Material.Button.Colored"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
+        android:background="#EC407A"
         android:text="Add"
+
         app:layout_constraintBottom_toTopOf="@+id/input_decision"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toEndOf="@+id/radioGroup2"
+        app:layout_constraintTop_toTopOf="@+id/radioGroup2" />
 
     <RadioGroup
-        android:layout_width="92dp"
-        android:layout_height="225dp"
+        android:id="@+id/radioGroup2"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginTop="5dp"
         app:layout_constraintBottom_toTopOf="@+id/input_decision"
         app:layout_constraintEnd_toStartOf="@+id/decision_add"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/cat_icon"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="@+id/cat_dialog">
 
         <RadioButton
             android:id="@+id/emotion_positive"
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
             android:layout_weight="1"
-            android:text="Positive" />
+            android:background="@drawable/shape_positive"
+            android:buttonTint="#FFFFFF"
+            android:paddingEnd="5dp"
+            android:text="Positive"
+            android:textAllCaps="true"
+            android:textColor="#FFFFFF" />
 
         <RadioButton
             android:id="@+id/emotion_neutral"
 
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
+            style="@android:style/Widget.Material.Light.CompoundButton.RadioButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
             android:layout_weight="1"
-            android:text="Neutral" />
+            android:background="@drawable/shape_neutral"
+            android:buttonTint="#FFFFFF"
+            android:paddingEnd="5dp"
+            android:text="Neutral"
+            android:textAllCaps="true"
+            android:textColor="#FFFFFF" />
 
         <RadioButton
             android:id="@+id/emotion_negative"
             android:layout_width="wrap_content"
-            android:layout_height="0dp"
+            android:layout_height="wrap_content"
 
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
             android:layout_weight="1"
-            android:text="Negative" />
+            android:background="@drawable/shape_negative"
+            android:buttonTint="#FFFFFF"
+            android:paddingEnd="5dp"
+            android:text="Negative"
+            android:textAllCaps="true"
+            android:textColor="#FFFFFF" />
     </RadioGroup>
 
     <RadioGroup
         android:id="@+id/top_radiogroup"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:layout_marginHorizontal="16dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/radioGroup"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/fast_pick_label"
-        android:orientation="horizontal">
+        app:layout_constraintTop_toBottomOf="@+id/fast_pick_label">
 
 
-<!--                <LinearLayout-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_weight="1"-->
-<!--                    android:orientation="horizontal">-->
+        <!--                <LinearLayout-->
+        <!--                    android:layout_width="match_parent"-->
+        <!--                    android:layout_height="wrap_content"-->
+        <!--                    android:layout_weight="1"-->
+        <!--                    android:orientation="horizontal">-->
 
-                    <RadioButton
-                        android:id="@+id/decision_eat"
-                        android:layout_width="100dp"
-                        android:layout_height="100dp"
-                        android:scaleType="fitCenter"
+        <RadioButton
+            android:id="@+id/decision_eat"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginHorizontal="5dp"
+            android:layout_weight="1"
+            android:background="@drawable/eat_selector"
+            android:button="@null"
+            android:scaleType="centerInside" />
 
-                        android:layout_weight="1"
-                        android:background="@drawable/decision_selector"
-                        android:button="@drawable/eat"
-                        android:layout_marginHorizontal="10dp"
-                         />
+        <RadioButton
+            android:id="@+id/decision_study"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginHorizontal="5dp"
+            android:layout_weight="1"
 
-                    <RadioButton
-                        android:id="@+id/decision_study"
-                        android:layout_width="100dp"
-                        android:layout_height="100dp"
-                        android:layout_weight="1"
-                        android:scaleType="fitCenter"
+            android:background="@drawable/study_selector"
+            android:button="@null"
+            android:scaleType="centerInside"
 
-                        android:background="@drawable/decision_selector"
-                        android:button="@drawable/study"
-                        android:layout_marginHorizontal="10dp"
+            />
 
-                        />
-
-                    <RadioButton
-                        android:id="@+id/decision_shop"
-                        android:layout_width="100dp"
-                        android:layout_height="100dp"
-                        android:layout_weight="1"
-                        android:scaleType="fitCenter"
-                        android:background="@drawable/decision_selector"
-                        android:button="@drawable/shop"
-                        android:layout_marginHorizontal="10dp"
-                        />
+        <RadioButton
+            android:id="@+id/decision_shop"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginHorizontal="5dp"
+            android:layout_weight="1"
+            android:background="@drawable/shop_selector"
+            android:button="@null"
+            android:scaleType="centerInside" />
 
     </RadioGroup>
 
     <RadioGroup
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:id="@+id/radioGroup"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="5dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/top_radiogroup"
-        android:orientation="horizontal">
+        app:layout_constraintTop_toBottomOf="@+id/top_radiogroup">
 
         <RadioButton
             android:id="@+id/decision_game"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:scaleType="fitCenter"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginHorizontal="5dp"
 
             android:layout_weight="1"
-            android:background="@drawable/decision_selector"
-            android:button="@drawable/game"
-            android:layout_marginHorizontal="10dp"
-            />
+            android:background="@drawable/game_selector"
+            android:button="@null"
+            android:scaleType="fitCenter" />
 
         <RadioButton
             android:id="@+id/decision_music"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginHorizontal="5dp"
             android:layout_weight="1"
-            android:scaleType="fitCenter"
 
-            android:background="@drawable/decision_selector"
-            android:button="@drawable/entertain"
-            android:layout_marginHorizontal="10dp"
+            android:background="@drawable/entertain_selector"
+            android:button="@null"
+            android:scaleType="centerInside"
 
             />
 
         <RadioButton
             android:id="@+id/decision_workout"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginHorizontal="5dp"
             android:layout_weight="1"
-            android:scaleType="fitCenter"
-            android:background="@drawable/decision_selector"
-            android:button="@drawable/workout"
-            android:layout_marginHorizontal="10dp"
-            />
+            android:background="@drawable/workout_selector"
+            android:button="@null"
+            android:scaleType="centerInside" />
 
     </RadioGroup>
 
