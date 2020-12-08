@@ -1,5 +1,7 @@
 package edu.neu.madcourse.decisionjournal.model;
 
+import androidx.annotation.NonNull;
+
 public enum EmoEnum {
     SAD(-1),
     NEUTRAL(0),
@@ -25,6 +27,18 @@ public enum EmoEnum {
                 return HAPPY;
             default:
                 return NONE;
+        }
+    }
+
+
+    @NonNull
+    @Override
+    public String toString() {
+        switch (this) {
+            case SAD: return "Sad";
+            case NEUTRAL: return "Neutral";
+            case HAPPY: return "Happy";
+            default: return "Error";
         }
     }
 }
