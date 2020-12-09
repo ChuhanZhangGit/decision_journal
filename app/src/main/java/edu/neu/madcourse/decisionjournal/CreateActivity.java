@@ -40,8 +40,7 @@ public class CreateActivity extends AppCompatActivity {
         Log.v(TAG, "onCreate");
 
         repo = new AsyncRecordRepository(getApplicationContext());
-        Log.i(TAG, "before insert");
-        repo.insert(new Record(DecisionEnum.WORKOUT, EmoEnum.HAPPY, test_date));
+//        Log.i(TAG, "before insert");
         negativeEmotionBn = findViewById(R.id.emotion_negative);
         neutralEmotionBn = findViewById(R.id.emotion_neutral);
         positiveEmotionBn = findViewById(R.id.emotion_positive);

@@ -27,8 +27,8 @@ public abstract class AppDatabase extends RoomDatabase {
     public abstract RecordDao recordDao();
     private static volatile AppDatabase INSTANCE;
     private static final int NUMBER_OF_THREADS = 4;
-    private static Date test_date = Date.valueOf(LocalDate.of(1999, 01,01).toString());
-
+    private static Date test_date = Date.valueOf(LocalDate.of(2020, 12,9).toString());
+    private static Date today = Date.valueOf(LocalDate.now().toString());
     public static final ExecutorService executor =
             Executors.newFixedThreadPool(NUMBER_OF_THREADS);
 
@@ -58,8 +58,11 @@ public abstract class AppDatabase extends RoomDatabase {
 //                dao.deleteAll();
 
                 // Can Prepopulate database below.
-//                INSTANCE.recordDao().insert(new Record(DecisionEnum.WORKOUT, EmoEnum.HAPPY, test_date));
+                INSTANCE.recordDao().insert(new Record(DecisionEnum.WORKOUT, EmoEnum.HAPPY, test_date));
+                INSTANCE.recordDao().insert(new Record(DecisionEnum.STUDY, EmoEnum.HAPPY, new Date(test_date.getTime() + 1000)));
 
+                INSTANCE.recordDao().insert(new Record(DecisionEnum.MUSIC, EmoEnum.HAPPY, today));
+                INSTANCE.recordDao().insert(new Record(DecisionEnum.EAT, EmoEnum.HAPPY, new Date(today.getTime() + 1000)));
             });
         }
     };
