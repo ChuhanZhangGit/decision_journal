@@ -28,6 +28,8 @@ public class RecordRecyclerAdapter extends RecyclerView.Adapter<RecordRecyclerAd
     @NonNull
     @Override
     public RecordViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        Log.i(TAG, "in onCreateViewHolder adapter");
+
         View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.record_recycler_item, parent, false);
         return new RecordViewHolder(view);
@@ -35,6 +37,7 @@ public class RecordRecyclerAdapter extends RecyclerView.Adapter<RecordRecyclerAd
 
     @Override
     public void onBindViewHolder(@NonNull RecordViewHolder holder, int position) {
+        Log.i(TAG, "in onBindViewHolder adapter");
 
         Record current = recordList.get(position);
         holder.bind(current);
@@ -42,15 +45,21 @@ public class RecordRecyclerAdapter extends RecyclerView.Adapter<RecordRecyclerAd
 
     @Override
     public int getItemCount() {
+        Log.i(TAG, String.format("in getItemCount: size %d adapter", recordList.size()));
         return recordList.size();
     }
 
     public void submitList(List<Record> data) {
-        Log.i(TAG, String.format("submit list data size: %d", data.size()));
+        Log.i(TAG, String.format("previous recordList data size: %d", recordList.size()));
+
         if (data != null) {
+            Log.i(TAG, String.format("submit list data size: %d", data.size()));
             recordList.clear();
             recordList.addAll(data);
+            Log.i(TAG, String.format("recordList data size: %d", recordList.size()));
+
             notifyDataSetChanged();
+
         }
     }
 
@@ -68,6 +77,7 @@ public class RecordRecyclerAdapter extends RecyclerView.Adapter<RecordRecyclerAd
         }
 
         public void bind(Record record) {
+            Log.i(TAG, "in bind record VH");
             timeTextView.setText(format.format(record.date));
             decisionTextView.setText(record.decision.toString());
             emotionTextView.setText(record.emotion.toString());
