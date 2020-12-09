@@ -6,6 +6,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.CalendarView;
@@ -13,6 +14,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.google.android.material.appbar.AppBarLayout;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.sql.Date;
 import java.time.LocalDate;
@@ -33,6 +35,8 @@ public class MainActivity extends AppCompatActivity {
     private LocalDate selectedDate = LocalDate.now();
     private TextView selectedDateTextView;
 
+    private FloatingActionButton fab;
+
     private RecyclerView.LayoutManager recyclerLayoutManager;
     private RecyclerView recordRecyclerView;
     private RecordRecyclerAdapter recordRecyclerAdapter;
@@ -50,6 +54,8 @@ public class MainActivity extends AppCompatActivity {
         appBarLayout = findViewById(R.id.app_bar_layout);
         calendarView = findViewById(R.id.calendar_view);
         selectedDateTextView = findViewById(R.id.toolbar_date_display);
+        fab = findViewById(R.id.fab);
+
         appBarLayout.setExpanded(appbarExpanded);
 
         recordRecyclerView = findViewById(R.id.record_recycler_view);
@@ -114,6 +120,8 @@ public class MainActivity extends AppCompatActivity {
                 appbarExpanded = !appbarExpanded;
                 appBarLayout.setExpanded(appbarExpanded, true);
                 break;
+            case R.id.fab:
+                startActivity(new Intent(this, CreateActivity.class));
         }
     }
 }
