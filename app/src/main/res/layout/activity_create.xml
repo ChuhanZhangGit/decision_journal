@@ -143,8 +143,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="#EC407A"
-        android:text="Add"
+        android:onClick="onClick"
 
+        android:text="Add"
         app:layout_constraintBottom_toTopOf="@+id/input_decision"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/emotion_radioGroup"

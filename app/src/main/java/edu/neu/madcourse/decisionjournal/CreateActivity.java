@@ -5,14 +5,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.RadioGroup;
+import android.widget.Toast;
+
+import com.google.android.material.snackbar.Snackbar;
 
 import java.sql.Date;
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
 import edu.neu.madcourse.decisionjournal.dao.AsyncRecordRepository;
 import edu.neu.madcourse.decisionjournal.model.DecisionEnum;
@@ -28,16 +27,11 @@ public class CreateActivity extends AppCompatActivity {
 
     private Date test_date = Date.valueOf(LocalDate.of(2020, 02, 22).toString());
 
-//    private Button positiveEmotionBn;
-//    private Button neutralEmotionBn;
-//    private Button negativeEmotionBn;
-
     private RadioGroup decisionTopGroup;
     private RadioGroup decisionBottomGroup;
     private RadioGroup emotionGroup;
 
-//    private List<Button> emoBnList = new ArrayList<>();
-//    private List<Button> typeBnList = new ArrayList<>();
+
 
     /* Below is a hacky way to combine two radiogroup to one. If not set listener to null, would
     result in recursive calling between two listener and stack overflow.
@@ -77,38 +71,74 @@ public class CreateActivity extends AppCompatActivity {
 
         decisionTopGroup.setOnCheckedChangeListener(topListener);
         decisionBottomGroup.setOnCheckedChangeListener(bottomListener);
-//        Log.i(TAG, "before insert");
-//        negativeEmotionBn = findViewById(R.id.emotion_negative);
-//        neutralEmotionBn = findViewById(R.id.emotion_neutral);
-//        positiveEmotionBn = findViewById(R.id.emotion_positive);
-//        generateList(emoBnList, negativeEmotionBn, neutralEmotionBn, positiveEmotionBn);
     }
 
 
-//    private void generateList(List<Button> list, Button... buttons) {
-//        list.addAll(Arrays.asList(buttons));
-//    }
-//
-//    public void emotionOnClick(View view) {
-//        switch (view.getId()) {
-//            case R.id.emotion_positive:
-//                onClickHelper(positiveEmotionBn, emoBnList);
-//            case R.id.emotion_negative:
-//                onClickHelper(negativeEmotionBn, emoBnList);
-//            case R.id.emotion_neutral:
-//                onClickHelper(neutralEmotionBn, emoBnList);
-//        }
-//    }
-//
-//    private void onClickHelper(Button button, List<Button> bnList) {
-//        boolean prevState = button.isPressed();
-//        if (!prevState) {
-//            for (Button bn : bnList) {
-//                if (bn.isPressed()) {
-//                    bn.setSelected(false);
-//                }
-//            }
-//        }
-//        button.setSelected(!prevState);
-//    }
+
+    private Record generateRecord(EmoEnum emotion, DecisionEnum decision) {
+        return new Record(decision, emotion, new Date(System.currentTimeMillis()));
+    }
+
+    private boolean userInputIsValid() {
+        return (decisionTopGroup.getCheckedRadioButtonId() != -1 ||
+                decisionBottomGroup.getCheckedRadioButtonId() != -1) &&
+                emotionGroup.getCheckedRadioButtonId() != -1;
+    }
+
+    private DecisionEnum idToDecisionEnum(int decisionBnId) {
+        switch (decisionBnId) {
+            case R.id.decision_workout:
+                return DecisionEnum.WORKOUT;
+            case R.id.decision_study:
+                return DecisionEnum.STUDY;
+            case R.id.decision_eat:
+                return DecisionEnum.EAT;
+            case R.id.decision_music:
+                return DecisionEnum.MUSIC;
+            case R.id.decision_game:
+                return DecisionEnum.GAME;
+            case R.id.decision_shop:
+                return DecisionEnum.SHOP;
+            default:
+                return DecisionEnum.NONE;
+        }
+    }
+
+    private EmoEnum idToEmoEnum(int emotionBnId) {
+        switch (emotionBnId) {
+            case R.id.emotion_positive:
+                return EmoEnum.HAPPY;
+            case R.id.emotion_neutral:
+                return EmoEnum.NEUTRAL;
+            case R.id.emotion_negative:
+                return EmoEnum.SAD;
+            default:
+                return EmoEnum.NONE;
+        }
+    }
+
+    private void handleAddDecision() {
+        if (userInputIsValid()) {
+            int emotionBnId = emotionGroup.getCheckedRadioButtonId();
+            EmoEnum emotion = idToEmoEnum(emotionBnId);
+            int decisionBnId = decisionTopGroup.getCheckedRadioButtonId() != -1 ?
+                    decisionTopGroup.getCheckedRadioButtonId() : decisionBottomGroup.getCheckedRadioButtonId();
+
+            DecisionEnum decision = idToDecisionEnum(decisionBnId);
+            Record record = generateRecord(emotion, decision);
+            Log.i(TAG, String.format("Record to be added: %s, %s", emotion.toString(),
+                    decision.toString()));
+            repo.insert(record);
+        }
+    }
+
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.decision_add:
+                handleAddDecision();
+                Toast.makeText(this, "record added", Toast.LENGTH_SHORT).show();
+                finish();
+        }
+    }
+
 }
