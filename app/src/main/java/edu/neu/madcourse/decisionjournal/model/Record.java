@@ -86,4 +86,12 @@ public class Record {
         this.emotion = emotion;
         this.date = date;
     }
+
+    @Ignore
+    public Record(@NonNull DecisionEnum decision, @NonNull EmoEnum emotion, @NonNull Date date, @Nullable String comment) {
+        this.decision = decision;
+        this.emotion = emotion;
+        this.date = date;
+        this.comment = comment;
+    }
 }
