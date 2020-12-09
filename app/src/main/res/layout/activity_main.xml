@@ -35,7 +35,7 @@
                     android:id="@+id/calendar_view"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@drawable/calendar_background"/>
+                    android:background="@drawable/calendar_background" />
             </LinearLayout>
 
 
@@ -58,8 +58,8 @@
                         android:id="@+id/toolbar_date_display"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:gravity="center"
                         android:layout_margin="5dp"
+                        android:gravity="center"
                         android:textSize="20dp" />
 
                 </LinearLayout>
@@ -67,21 +67,17 @@
             </androidx.appcompat.widget.Toolbar>
 
 
-
         </com.google.android.material.appbar.CollapsingToolbarLayout>
     </com.google.android.material.appbar.AppBarLayout>
 
 
-
     <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/record_recycler_view"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:background="@android:color/background_light"
-            android:padding="5dp" />
-
-
-
+        android:id="@+id/record_recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/background_light"
+        android:padding="5dp"
+        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior" />
 
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
