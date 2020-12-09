@@ -14,11 +14,11 @@
         android:layout_marginStart="10dp"
         android:layout_marginBottom="1dp"
         android:text="Decision Comment"
-        app:layout_constraintBottom_toTopOf="@+id/input_decision"
+        app:layout_constraintBottom_toTopOf="@+id/decision_comment"
         app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
-        android:id="@+id/input_decision"
+        android:id="@+id/decision_comment"
         style="@android:style/Widget.Material.EditText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -61,7 +61,7 @@
         android:layout_marginTop="5dp"
         android:text="Pick your decision"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/input_decision" />
+        app:layout_constraintTop_toBottomOf="@+id/decision_comment" />
 
     <!--    <ImageButton-->
     <!--        android:id="@+id/decision_eat"-->
@@ -146,7 +146,7 @@
         android:onClick="onClick"
 
         android:text="Add"
-        app:layout_constraintBottom_toTopOf="@+id/input_decision"
+        app:layout_constraintBottom_toTopOf="@+id/decision_comment"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/emotion_radioGroup"
         app:layout_constraintTop_toTopOf="@+id/emotion_radioGroup" />
@@ -156,7 +156,7 @@
         android:layout_width="wrap_content"
         android:layout_height="0dp"
         android:layout_marginTop="5dp"
-        app:layout_constraintBottom_toTopOf="@+id/input_decision"
+        app:layout_constraintBottom_toTopOf="@+id/decision_comment"
         app:layout_constraintEnd_toStartOf="@+id/decision_add"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/cat_icon"

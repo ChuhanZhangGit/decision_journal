@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.RadioGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.snackbar.Snackbar;
@@ -30,7 +31,7 @@ public class CreateActivity extends AppCompatActivity {
     private RadioGroup decisionTopGroup;
     private RadioGroup decisionBottomGroup;
     private RadioGroup emotionGroup;
-
+    private TextView commentTextView;
 
 
     /* Below is a hacky way to combine two radiogroup to one. If not set listener to null, would
@@ -68,6 +69,7 @@ public class CreateActivity extends AppCompatActivity {
         decisionTopGroup = findViewById(R.id.top_radioGroup);
         decisionBottomGroup = findViewById(R.id.bottom_radioGroup);
         emotionGroup = findViewById(R.id.emotion_radioGroup);
+        commentTextView = findViewById(R.id.decision_comment);
 
         decisionTopGroup.setOnCheckedChangeListener(topListener);
         decisionBottomGroup.setOnCheckedChangeListener(bottomListener);
@@ -75,8 +77,13 @@ public class CreateActivity extends AppCompatActivity {
 
 
 
-    private Record generateRecord(EmoEnum emotion, DecisionEnum decision) {
-        return new Record(decision, emotion, new Date(System.currentTimeMillis()));
+    private Record generateRecord(EmoEnum emotion, DecisionEnum decision, String comment) {
+        Date curr = new Date(System.currentTimeMillis());
+        if (comment == null || comment.length()==0) {
+            return new Record(decision, emotion, curr);
+        } else {
+            return new Record(decision, emotion, curr, comment);
+        }
     }
 
     private boolean userInputIsValid() {
@@ -125,9 +132,11 @@ public class CreateActivity extends AppCompatActivity {
                     decisionTopGroup.getCheckedRadioButtonId() : decisionBottomGroup.getCheckedRadioButtonId();
 
             DecisionEnum decision = idToDecisionEnum(decisionBnId);
-            Record record = generateRecord(emotion, decision);
-            Log.i(TAG, String.format("Record to be added: %s, %s", emotion.toString(),
-                    decision.toString()));
+            String comment = commentTextView.getText().toString();
+
+            Record record = generateRecord(emotion, decision, comment);
+            Log.i(TAG, String.format("Record to be added: %s, %s, comment %s", emotion.toString(),
+                    decision.toString(), comment));
             repo.insert(record);
         }
     }
