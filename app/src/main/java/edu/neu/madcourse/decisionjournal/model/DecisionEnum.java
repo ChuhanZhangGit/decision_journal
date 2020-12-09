@@ -1,6 +1,8 @@
 package edu.neu.madcourse.decisionjournal.model;
 
 
+import androidx.annotation.NonNull;
+
 public enum  DecisionEnum {
     NONE(0),
     EAT(1),
@@ -26,6 +28,21 @@ public enum  DecisionEnum {
             case 5: return MUSIC;
             case 6: return WORKOUT;
             default: return NONE;
+        }
+    }
+
+
+    @NonNull
+    @Override
+    public String toString() {
+        switch (this) {
+            case EAT: return "Eat";
+            case STUDY: return "Stduy";
+            case SHOP: return "Shop";
+            case GAME: return "Game";
+            case MUSIC: return  "Music";
+            case WORKOUT: return "Workout";
+            default: return "Error";
         }
     }
 }

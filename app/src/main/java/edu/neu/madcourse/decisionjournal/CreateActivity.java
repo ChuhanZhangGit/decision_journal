@@ -25,7 +25,7 @@ public class CreateActivity extends AppCompatActivity {
     private final String TAG = "CreateActivity";
     private AsyncRecordRepository repo;
 
-    private Date test_date = Date.valueOf(LocalDate.of(2020, 02,22).toString());
+    private Date test_date = Date.valueOf(LocalDate.of(2020, 02, 22).toString());
 
     private Button positiveEmotionBn;
     private Button neutralEmotionBn;
@@ -37,18 +37,17 @@ public class CreateActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create);
-        Log.v(TAG,"onCreate");
+        Log.v(TAG, "onCreate");
 
-        repo = AsyncRecordRepository.getInstance(getApplicationContext());
-        Log.i(TAG, "before insert");
-        repo.insert(new Record(DecisionEnum.WORKOUT, EmoEnum.HAPPY, test_date));
+        repo = new AsyncRecordRepository(getApplicationContext());
+//        Log.i(TAG, "before insert");
         negativeEmotionBn = findViewById(R.id.emotion_negative);
         neutralEmotionBn = findViewById(R.id.emotion_neutral);
-        positiveEmotionBn =findViewById(R.id.emotion_positive);
+        positiveEmotionBn = findViewById(R.id.emotion_positive);
         generateList(emoBnList, negativeEmotionBn, neutralEmotionBn, positiveEmotionBn);
     }
 
-    private void generateList( List<Button> list, Button ... buttons) {
+    private void generateList(List<Button> list, Button... buttons) {
         list.addAll(Arrays.asList(buttons));
     }
 
@@ -64,7 +63,7 @@ public class CreateActivity extends AppCompatActivity {
     }
 
     private void onClickHelper(Button button, List<Button> bnList) {
-        boolean prevState= button.isPressed();
+        boolean prevState = button.isPressed();
         if (!prevState) {
             for (Button bn : bnList) {
                 if (bn.isPressed()) {

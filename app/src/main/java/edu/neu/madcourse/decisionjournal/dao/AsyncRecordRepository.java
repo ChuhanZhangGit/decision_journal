@@ -18,23 +18,23 @@ import edu.neu.madcourse.decisionjournal.model.Record;
  * database operation which will prevent the operation freeze UI thread.
  */
 public class AsyncRecordRepository {
-    private static AppDatabase database;
-    private static RecordDao recordDao;
-    private static volatile AsyncRecordRepository INSTANCE;
+    private  AppDatabase database;
+    private  RecordDao recordDao;
+//    private static volatile AsyncRecordRepository INSTANCE;
 
-    private AsyncRecordRepository(Context application) {
+    public AsyncRecordRepository(Context application) {
         database = AppDatabase.getDatabase(application);
         recordDao = database.recordDao();
     }
 
-    public static AsyncRecordRepository getInstance(Context application) {
-        if (INSTANCE == null) {
-            synchronized (AsyncRecordRepository.class) {
-                INSTANCE = new AsyncRecordRepository(application);
-            }
-        }
-        return INSTANCE;
-    }
+//    public static AsyncRecordRepository getInstance(Context application) {
+//        if (INSTANCE == null) {
+//            synchronized (AsyncRecordRepository.class) {
+//                INSTANCE = new AsyncRecordRepository(application);
+//            }
+//        }
+//        return INSTANCE;
+//    }
 
     public LiveData<List<Record>> getRecordOnDate(Date date) {
         // date toString leave only date field.
