@@ -102,7 +102,7 @@ public class MainActivity extends AppCompatActivity {
                 selectedDate = LocalDate.of(i, i1 + 1, i2);
                 setToolbarDate();
                 handleDateChanged();
-                // calendarview's date wont change upon date selection, only this listener is called.
+                // calendarview's setdate/getdate wont change upon date selection, only this listener is called.
 //                LocalDate newDate = Instant.ofEpochMilli(calendarView.getDate()).atZone(ZoneId.systemDefault()).toLocalDate();
 //                Log.i(TAG, String.format("in date listener, new date: %s", newDate.toString()));
             }
