@@ -122,6 +122,8 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case R.id.fab:
                 startActivity(new Intent(this, CreateActivity.class));
+            case R.id.cat_dialog_bn:
+                CatDialogFragment.getInstance().show(getSupportFragmentManager(), "cat dialog");
         }
     }
 }
