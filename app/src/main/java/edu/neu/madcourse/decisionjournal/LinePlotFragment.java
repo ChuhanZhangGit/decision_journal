@@ -81,7 +81,9 @@ public class LinePlotFragment extends Fragment {
         LineDataSet lineDataSet2 = new LineDataSet(dataValues2(), "Data Set 2");
 
         lineDataSet1.setColor(ColorTemplate.JOYFUL_COLORS[0]);
+        lineDataSet1.setLineWidth(4);
         lineDataSet2.setColor(ColorTemplate.JOYFUL_COLORS[1]);
+        lineDataSet2.setLineWidth(4);
 
         ArrayList<ILineDataSet> dataSets = new ArrayList<>();
         dataSets.add(lineDataSet1);
@@ -90,11 +92,9 @@ public class LinePlotFragment extends Fragment {
         LineData lineData = new LineData(dataSets);
 
 
+
         lineChart.setData(lineData);
 
-
-//        lineChart.setBorderWidth(20);
-//        lineChart.setPadding(10,20,20,10);
         lineChart.setNoDataText("No record found!");
         lineChart.setDrawGridBackground(true);
         lineChart.setGridBackgroundColor(Color.rgb(232, 234, 246));
