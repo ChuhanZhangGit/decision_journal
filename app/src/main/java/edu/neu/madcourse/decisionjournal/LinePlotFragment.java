@@ -17,9 +17,11 @@ import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.components.Description;
 import com.github.mikephil.charting.components.Legend;
 import com.github.mikephil.charting.components.LegendEntry;
+import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
+import com.github.mikephil.charting.formatter.IndexAxisValueFormatter;
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
 import com.github.mikephil.charting.utils.ColorTemplate;
 
@@ -91,7 +93,10 @@ public class LinePlotFragment extends Fragment {
 
         LineData lineData = new LineData(dataSets);
 
-
+        String[] labels = new String[]{"One", "Two", "Three", "Four","Five","Six","Seven"};
+        XAxis xAxis = lineChart.getXAxis();
+        xAxis.setValueFormatter(new IndexAxisValueFormatter(labels));
+        xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
 
         lineChart.setData(lineData);
 
