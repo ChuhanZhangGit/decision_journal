@@ -1,10 +1,12 @@
 package edu.neu.madcourse.decisionjournal;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.fragment.NavHostFragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -49,6 +51,18 @@ public class LinePlotFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+
+        view.findViewById(R.id.btn_plot_bar).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                NavHostFragment.findNavController(LinePlotFragment.this)
+                        .navigate(R.id.action_to_bar_plot);
+            }
+        });
+
+
+
 
         lineChart = view.findViewById(R.id.line_emotion);
 
