@@ -22,8 +22,19 @@
         android:layout_height="wrap_content"
         android:text="Bar Chart"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/line_to_home"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/line_emotion" />
+
+    <Button
+        android:id="@+id/line_to_home"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:text="Home"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/btn_plot_bar"
         app:layout_constraintTop_toBottomOf="@id/line_emotion" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -61,7 +61,13 @@ public class LinePlotFragment extends Fragment {
             }
         });
 
-
+        view.findViewById(R.id.line_to_home).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), MainActivity.class);
+                startActivity(intent);
+            }
+        });
 
 
         lineChart = view.findViewById(R.id.line_emotion);
