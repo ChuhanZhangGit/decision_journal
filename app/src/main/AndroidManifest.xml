@@ -16,8 +16,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".LinePlotActivity">
-        </activity>
         <activity android:name=".CreateActivity" />
         <activity
             android:name=".MainActivity"
