@@ -69,8 +69,8 @@ public class AsyncRecordRepository {
 
         Date dayEnd = Date.valueOf(dateOnly);
         // hard coded day end in millisecond
-        Date dayStart = new Date(dayEnd.getTime() - 24 * 60 * 60 * 1000 * 7 - 1);
-        return recordDao.getRecordBetweenDate(dayStart, dayEnd);
+        Date dayStart = new Date(dayEnd.getTime() - 24 * 60 * 60 * 1000 * 7 + 1);
+        return recordDao.getRecordBetweenDate(dayStart, new Date(dayEnd.getTime() + 24 * 60 * 60 * 1000 - 1));
     }
 
 
