@@ -94,50 +94,6 @@ public class LinePlotFragment extends Fragment {
         recordRepository = new AsyncRecordRepository(this.getActivity().getApplicationContext());
 
         lineChart = view.findViewById(R.id.line_emotion);
-
-//        LineDataSet lineDataSet1 = new LineDataSet(dataValues1(), "Data Set 1");
-//        LineDataSet lineDataSet2 = new LineDataSet(dataValues2(), "Data Set 2");
-//
-//        lineDataSet1.setColor(ColorTemplate.JOYFUL_COLORS[0]);
-//        lineDataSet1.setLineWidth(4);
-//        lineDataSet2.setColor(ColorTemplate.JOYFUL_COLORS[1]);
-//        lineDataSet2.setLineWidth(4);
-//
-//        ArrayList<ILineDataSet> dataSets = new ArrayList<>();
-//        dataSets.add(lineDataSet1);
-//        dataSets.add(lineDataSet2);
-//
-//        LineData lineData = new LineData(dataSets);
-//
-//        String[] labels = new String[]{"One", "Two", "Three", "Four", "Five", "Six", "Seven"};
-//        XAxis xAxis = lineChart.getXAxis();
-//        xAxis.setValueFormatter(new IndexAxisValueFormatter(labels));
-//        xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
-//
-//        lineChart.setData(lineData);
-//
-//        lineChart.setNoDataText("No record found!");
-//        lineChart.setDrawGridBackground(true);
-//        lineChart.setGridBackgroundColor(Color.rgb(232, 234, 246));
-//        lineChart.setDrawBorders(true);
-//        Description description = new Description();
-//        description.setText("Your emotion curves for last 7 days");
-//        description.setTextSize(20);
-//        description.setTextColor(Color.rgb(26, 35, 126));
-//        lineChart.setDescription(description);
-//
-//        LegendEntry[] legendEntries = new LegendEntry[2];
-//        for (int i = 0; i < legendEntries.length; i++) {
-//            LegendEntry entry = new LegendEntry();
-//            entry.formColor = lineData.getColors()[i];
-//            entry.label = "data " + i;
-//            legendEntries[i] = entry;
-//        }
-//        Legend legend = lineChart.getLegend();
-//        legend.setCustom(legendEntries);
-//
-//
-//        lineChart.invalidate();
     }
 
     private LineChart lineChart;
@@ -221,7 +177,7 @@ public class LinePlotFragment extends Fragment {
             lineChart.setData(lineData);
 
             Description description = new Description();
-            description.setText("Your decisions in last 7 days");
+            description.setText("Decisions in last 7 days");
             description.setTextSize(20);
             description.setTextColor(Color.rgb(26, 35, 126));
             lineChart.setDescription(description);
@@ -236,26 +192,6 @@ public class LinePlotFragment extends Fragment {
             lineChart.invalidate();
 
         });
-    }
-
-    private ArrayList<Entry> dataValues1() {
-        ArrayList<Entry> dataVal = new ArrayList<>();
-        dataVal.add(new Entry(0, 20));
-        dataVal.add(new Entry(1, 24));
-        dataVal.add(new Entry(2, 50));
-        dataVal.add(new Entry(3, 10));
-        dataVal.add(new Entry(4, 28));
-        return dataVal;
-    }
-
-    private ArrayList<Entry> dataValues2() {
-        ArrayList<Entry> dataVal = new ArrayList<>();
-        dataVal.add(new Entry(0, 10));
-        dataVal.add(new Entry(2, 34));
-        dataVal.add(new Entry(3, 40));
-        dataVal.add(new Entry(5, 20));
-        dataVal.add(new Entry(6, 38));
-        return dataVal;
     }
 
 }

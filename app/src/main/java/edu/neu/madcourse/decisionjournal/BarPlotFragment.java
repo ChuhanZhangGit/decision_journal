@@ -1,6 +1,7 @@
 package edu.neu.madcourse.decisionjournal;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -15,6 +16,7 @@ import android.view.ViewGroup;
 
 import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.components.Description;
+import com.github.mikephil.charting.components.Legend;
 import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.data.BarData;
 import com.github.mikephil.charting.data.BarDataSet;
@@ -110,6 +112,15 @@ public class BarPlotFragment extends Fragment {
             xAxis.setGranularity(1);
             xAxis.setGranularityEnabled(true);
 
+            Description description = new Description();
+            description.setText("Emotions in last 7 days");
+            description.setTextSize(20);
+            description.setTextColor(Color.rgb(26, 35, 126));
+            barChart.setDescription(description);
+
+            Legend legend = barChart.getLegend();
+            legend.setTextSize(15);
+
             barChart.setData(barData);
             barChart.invalidate();
         });
@@ -118,9 +129,10 @@ public class BarPlotFragment extends Fragment {
     }
 
     private int[] getColors() {
-        return new int[]{ColorTemplate.JOYFUL_COLORS[0],
-                ColorTemplate.JOYFUL_COLORS[1],
-                ColorTemplate.JOYFUL_COLORS[2]};
+        return new int[]{
+                Color.argb(0.99f, 0.0f, 0.4470f, 0.7410f),
+                Color.argb(0.7f, 0.8500f, 0.3250f, 0.0980f),
+                Color.argb(0.7f, 0.9290f, 0.6940f, 0.1250f)};
     }
 
     private static final double MILLIS_IN_A_DAY = 1000 * 60 * 60 * 24;
@@ -198,35 +210,6 @@ public class BarPlotFragment extends Fragment {
         Log.e("Index", startDate.toString() + "->" + currDate.toString() + ":" + idx);
         if (idx >= 0 && idx < 7) return idx;
         return -1;
-    }
-
-    private ArrayList<BarEntry> getData() {
-        BarEntry[] entries = new BarEntry[7];
-        Date day = Date.valueOf(LocalDate.now().toString());
-
-        recordRepository.getSevenDays(day).observe(this, records -> {
-            int size = records == null ? 0 : records.size();
-            Log.v("ReadDay", " " + size + " ");
-            for (Record record : records) {
-                Log.v("r:", record.date.toString() + " " + record.decision);
-            }
-        });
-
-        ArrayList<BarEntry> data = new ArrayList<>();
-        return data;
-    }
-
-    private ArrayList<BarEntry> dataStacked() {
-        ArrayList<BarEntry> data = new ArrayList<>();
-        data.add(new BarEntry(0, new float[]{1, 1, 2}));
-        data.add(new BarEntry(1, new float[]{0, 1, 2}));
-        data.add(new BarEntry(2, new float[]{3, 1, 0}));
-        data.add(new BarEntry(3, new float[]{2, 0, 2}));
-        data.add(new BarEntry(4, new float[]{2, 0, 2}));
-        data.add(new BarEntry(5, new float[]{2, 0, 5}));
-        data.add(new BarEntry(6, new float[]{2, 0, 6}));
-
-        return data;
     }
 
 }
