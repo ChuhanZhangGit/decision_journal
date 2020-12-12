@@ -217,7 +217,7 @@ public class LinePlotFragment extends Fragment {
             int month = calendar.get(Calendar.MONTH) + 1;
             int dayNum = calendar.get(Calendar.DAY_OF_MONTH);
 
-            xLabel[6 - i] = dayNum + "/" + month;
+            xLabel[6 - i] = month + "/" + dayNum;
             // offset to previous day
             day = new Date(day.getTime() - (long) MILLIS_IN_A_DAY);
         }
