@@ -17,11 +17,11 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.CalendarView;
-import android.widget.LinearLayout;
+
 import android.widget.TextView;
 
 import com.google.android.material.appbar.AppBarLayout;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
 
 import java.sql.Date;
 import java.time.LocalDate;
@@ -35,14 +35,12 @@ import edu.neu.madcourse.decisionjournal.dao.AsyncRecordRepository;
  */
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = MainActivity.class.getSimpleName();
-    private LinearLayout pickDateArea;
     private AppBarLayout appBarLayout;
     private CalendarView calendarView;
     boolean appbarExpanded = false;
 
     private LocalDate selectedDate = LocalDate.now();
     private TextView selectedDateTextView;
-
 
     private RecyclerView recordRecyclerView;
     private RecordRecyclerAdapter recordRecyclerAdapter;
@@ -62,7 +60,6 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        pickDateArea = findViewById(R.id.pick_date_area);
         appBarLayout = findViewById(R.id.app_bar_layout);
         calendarView = findViewById(R.id.calendar_view);
         selectedDateTextView = findViewById(R.id.toolbar_date_display);
@@ -195,6 +192,9 @@ public class MainActivity extends AppCompatActivity {
             case R.id.cat_dialog_bn:
                 launchCatDialog();
                 break;
+            case R.id.plot_activity_bn:
+                startActivity(new Intent(this, PlotActivity.class));
+
         }
     }
 

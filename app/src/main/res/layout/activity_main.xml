@@ -56,11 +56,25 @@
 
                     <TextView
                         android:id="@+id/toolbar_date_display"
-                        android:layout_width="match_parent"
+                        android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_margin="5dp"
                         android:gravity="center"
-                        android:textSize="20dp" />
+                        android:textSize="20dp"
+                        android:typeface="monospace"
+                        android:textColor="@color/white"
+                        android:layout_weight="4"/>
+
+                    <ImageButton
+                        android:id="@+id/plot_activity_bn"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_margin="0dp"
+                        android:background="@null"
+                        android:src="@drawable/ic_plots"
+                        android:layout_weight="1"
+                        android:onClick="onClick"
+                        />
 
                 </LinearLayout>
 
