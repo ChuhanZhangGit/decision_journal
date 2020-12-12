@@ -45,7 +45,6 @@ public class BarPlotFragment extends Fragment {
 
     BarChart barChart;
     private AsyncRecordRepository recordRepository;
-    private final int DAY_IN_MILLI = 24 * 60 * 60 * 1000;
     private static final String TAG = BarPlotFragment.class.getSimpleName();
 
 
@@ -135,7 +134,7 @@ public class BarPlotFragment extends Fragment {
                 Color.argb(0.7f, 0.9290f, 0.6940f, 0.1250f)};
     }
 
-    private static final double MILLIS_IN_A_DAY = 1000 * 60 * 60 * 24;
+    private static final int MILLIS_IN_A_DAY = 1000 * 60 * 60 * 24;
 
     private String[] getLabels() {
         Date day = Date.valueOf(LocalDate.now().toString());
@@ -157,8 +156,23 @@ public class BarPlotFragment extends Fragment {
     }
 
     // 7 day records -> data stack
-    private ArrayList<BarEntry> genDataStack(List<Record> records, Date startDate) {
+
+    /**
+     * Generate data stack from most recent 7 day's records. Only date portion of enddate will be
+     * used.
+     * @param records list of record
+     * @param endDate end day of 7 day's period. for most recent 7 day is currDate.
+     * @return
+     */
+    private ArrayList<BarEntry> genDataStack(List<Record> records, Date endDate) {
         int len = 7;
+        String endDateOnly = endDate.toString();
+
+        // endDate is time when endDate begins.
+        Date endDateStart = Date.valueOf(endDateOnly);
+
+        Date startDate = new Date(endDateStart.getTime() - (long) MILLIS_IN_A_DAY * 6);
+
         List<List<Record>> partitions = partitionRecords(records, startDate, len);
         ArrayList<BarEntry> dataStack = new ArrayList<>();
 
@@ -180,7 +194,7 @@ public class BarPlotFragment extends Fragment {
                         Log.e(TAG, "unrecognized emotion");
                 }
             }
-            Log.i(TAG, String.format("Emotion counts is [%f, %f, %f]", counts[0], counts[1], counts[2]));
+            Log.i(TAG, String.format("Idx: %d, Emotion counts is [%f, %f, %f]", i, counts[0], counts[1], counts[2]));
             dataStack.add(new BarEntry(i, counts));
         }
         return dataStack;
@@ -206,7 +220,7 @@ public class BarPlotFragment extends Fragment {
     }
 
     private int dateToIdx(Date currDate, Date startDate) {
-        int idx = 6 + (int) (currDate.getTime() - startDate.getTime()) / DAY_IN_MILLI;
+        int idx = (int) (currDate.getTime() - startDate.getTime()) / MILLIS_IN_A_DAY;
         Log.e("Index", startDate.toString() + "->" + currDate.toString() + ":" + idx);
         if (idx >= 0 && idx < 7) return idx;
         return -1;
