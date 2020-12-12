@@ -43,6 +43,9 @@ public class BarPlotFragment extends Fragment {
 
     BarChart barChart;
     private AsyncRecordRepository recordRepository;
+    private final int DAY_IN_MILLI = 24 * 60 * 60 * 1000;
+    private static final String TAG = BarPlotFragment.class.getSimpleName();
+
 
     public BarPlotFragment() {
         // Required empty public constructor
@@ -137,6 +140,59 @@ public class BarPlotFragment extends Fragment {
         }
 
         return xLabel;
+    }
+
+    // 7 day records -> data stack
+    private ArrayList<BarEntry> genDataStack(List<Record> records, Date startDate) {
+        int len = 7;
+        List<List<Record>> partitions = partitionRecords(records, startDate, len);
+        ArrayList<BarEntry> dataStack = new ArrayList<>();
+
+        for (int i = 0; i < len; i++) {
+            List<Record> currDay = partitions.get(i);
+            float[] counts = new float[]{0, 0, 0};
+            for (Record record : currDay) {
+                switch (record.emotion) {
+                    case HAPPY:
+                        counts[0] += 1.0f;
+                        break;
+                    case NEUTRAL:
+                        counts[1] += 1.0f;
+                        break;
+                    case SAD:
+                        counts[2] += 1.0f;
+                        break;
+                    default:
+                        Log.e(TAG, "unrecognized emotion");
+                }
+            }
+            Log.i(TAG, String.format("Emotion counts is [%f, %f, %f]", counts[0],counts[1],counts[2]));
+            dataStack.add(new BarEntry(i, counts));
+        }
+        return dataStack;
+    }
+
+    private List<List<Record>> partitionRecords(List<Record> records, Date startDate, int len) {
+        List<List<Record>> partitions = new ArrayList<>();
+        for (int i = 0; i < len; i++) {
+            partitions.add(new ArrayList<>());
+        }
+        for (Record record : records) {
+            int idx = dateToIdx(record.date, startDate);
+            if (idx == -1) {
+                Log.e(TAG, "idx isn't in 7 days");
+                continue;
+            }
+            partitions.get(idx).add(record);
+        }
+        return partitions;
+
+    }
+
+    private int dateToIdx(Date currDate, Date startDate) {
+        int idx = (int) (currDate.getTime() - startDate.getTime()) / DAY_IN_MILLI;
+        if (idx >= 0 && idx < 7) return idx;
+        return -1;
     }
 
     private ArrayList<BarEntry> getData() {
