@@ -81,10 +81,11 @@
                         android:id="@+id/plot_activity_bn"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:layout_margin="0dp"
+                        android:layout_margin="8dp"
                         android:background="@null"
+                        android:scaleType="fitCenter"
                         android:src="@drawable/ic_plots"
-                        android:layout_weight="1"
+                        android:layout_weight="1.5"
                         android:onClick="onClick"
                         />
 
