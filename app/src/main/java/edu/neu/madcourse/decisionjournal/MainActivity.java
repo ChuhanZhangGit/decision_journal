@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.DialogFragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -119,8 +120,8 @@ public class MainActivity extends AppCompatActivity {
 //                    linear_acceleration[0], linear_acceleration[1], linear_acceleration[2]));
             lastAcceleration = currAcceleration;
             currAcceleration = ax * ax + ay * ay + az * az;
-            Log.i(TAG, String.format("Current accelation: %f, previous acceleration: %f",
-                    currAcceleration, lastAcceleration));
+//            Log.i(TAG, String.format("Current accelation: %f, previous acceleration: %f",
+//                    currAcceleration, lastAcceleration));
             if (!firstReading && currAcceleration - lastAcceleration > THRESHOLD * THRESHOLD) {
                 Log.i(TAG, String.format("Triggered when Current accelation: %f, previous acceleration: %f",
                         currAcceleration, lastAcceleration));
@@ -156,7 +157,7 @@ public class MainActivity extends AppCompatActivity {
     // Observe new date when selected date changes.
     private void handleDateChanged() {
         Date currDate = Date.valueOf(selectedDate.toString());
-        Log.v("Date format",currDate.toString());
+        Log.v("Date format", currDate.toString());
         recordRepository.getRecordOnDate(currDate).observe(this, records -> {
             recordRecyclerAdapter.submitList(records);
         });
@@ -195,18 +196,27 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case R.id.plot_activity_bn:
                 startActivity(new Intent(this, PlotActivity.class));
-
+                break;
         }
     }
 
     private void launchCatDialog() {
+        Log.i("CatDialog", "launch");
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        // fragmentmanager execute asynrously executePendingTransactions let it complete previous transactions
+        fragmentManager.executePendingTransactions();
+        if (catDialog.isAdded()) {
+            Log.i(TAG, "Dialog already added.");
+            return;
+        }
+
         if (catDialog.getDialog() == null ||
                 !catDialog.getDialog().isShowing()) {
             catDialog.show(getSupportFragmentManager(), "cat dialog");
         }
     }
 
-    public void gotoPlot(View view){
+    public void gotoPlot(View view) {
         Intent intent = new Intent(this, PlotActivity.class);
         startActivity(intent);
     }
