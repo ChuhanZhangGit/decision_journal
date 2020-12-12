@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:autofillHints="decision"
+    android:background="#F9FBE7"
+    tools:context=".CreateActivity">
+
+    <TextView
+        android:id="@+id/cat_dialog"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:text="How's your day ?"
+        app:layout_constraintBottom_toTopOf="@+id/divider"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.2" />
+
+    <ImageView
+        android:id="@+id/cat_icon"
+        android:layout_width="200dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="5dp"
+        app:layout_constraintBottom_toTopOf="@+id/divider"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cat_dialog"
+        app:srcCompat="@drawable/cat" />
+
+    <TextView
+        android:id="@+id/fast_pick_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="5dp"
+        android:text="Pick your decision"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/divider" />
+
+
+    <Button
+        android:id="@+id/decision_add"
+        style="@android:style/Widget.Material.Button.Colored"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#EF5350"
+        android:onClick="onClick"
+
+        android:text="Add"
+        app:layout_constraintBottom_toBottomOf="@+id/emotion_radioGroup"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/emotion_radioGroup"
+        app:layout_constraintTop_toTopOf="@+id/emotion_radioGroup" />
+
+    <RadioGroup
+        android:id="@+id/emotion_radioGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        app:layout_constraintBottom_toTopOf="@+id/divider"
+        app:layout_constraintEnd_toStartOf="@+id/decision_add"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/cat_icon"
+        app:layout_constraintTop_toTopOf="@+id/cat_dialog">
+
+        <RadioButton
+            android:id="@+id/emotion_positive"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:layout_weight="1"
+            android:background="@drawable/shape_positive"
+            android:buttonTint="#FFFFFF"
+            android:paddingEnd="5dp"
+            android:text="Positive"
+            android:textAllCaps="true"
+            android:textColor="#FFFFFF" />
+
+        <RadioButton
+            android:id="@+id/emotion_neutral"
+
+            style="@android:style/Widget.Material.Light.CompoundButton.RadioButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:layout_weight="1"
+            android:background="@drawable/shape_neutral"
+            android:buttonTint="#FFFFFF"
+            android:paddingEnd="5dp"
+            android:text="Neutral"
+            android:textAllCaps="true"
+            android:textColor="#FFFFFF" />
+
+        <RadioButton
+            android:id="@+id/emotion_negative"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:layout_weight="1"
+            android:background="@drawable/shape_negative"
+            android:buttonTint="#FFFFFF"
+            android:paddingEnd="5dp"
+            android:text="Negative"
+            android:textAllCaps="true"
+            android:textColor="#FFFFFF" />
+    </RadioGroup>
+
+    <RadioGroup
+        android:id="@+id/top_radioGroup"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginHorizontal="16dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/bottom_radioGroup"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fast_pick_label">
+
+
+        <!--                <LinearLayout-->
+        <!--                    android:layout_width="match_parent"-->
+        <!--                    android:layout_height="wrap_content"-->
+        <!--                    android:layout_weight="1"-->
+        <!--                    android:orientation="horizontal">-->
+
+        <RadioButton
+            android:id="@+id/decision_eat"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginHorizontal="5dp"
+            android:layout_weight="1"
+            android:background="@drawable/eat_selector"
+            android:button="@null"
+            android:scaleType="centerInside" />
+
+        <RadioButton
+            android:id="@+id/decision_study"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginHorizontal="5dp"
+            android:layout_weight="1"
+
+            android:background="@drawable/study_selector"
+            android:button="@null"
+            android:scaleType="centerInside"
+
+            />
+
+        <RadioButton
+            android:id="@+id/decision_shop"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginHorizontal="5dp"
+            android:layout_weight="1"
+            android:background="@drawable/shop_selector"
+            android:button="@null"
+            android:scaleType="centerInside" />
+
+    </RadioGroup>
+
+    <RadioGroup
+        android:id="@+id/bottom_radioGroup"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="5dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/top_radioGroup">
+
+        <RadioButton
+            android:id="@+id/decision_game"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginHorizontal="5dp"
+
+            android:layout_weight="1"
+            android:background="@drawable/game_selector"
+            android:button="@null"
+            android:scaleType="fitCenter" />
+
+        <RadioButton
+            android:id="@+id/decision_music"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginHorizontal="5dp"
+            android:layout_weight="1"
+
+            android:background="@drawable/entertain_selector"
+            android:button="@null"
+            android:scaleType="centerInside"
+
+            />
+
+        <RadioButton
+            android:id="@+id/decision_workout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginHorizontal="5dp"
+            android:layout_weight="1"
+            android:background="@drawable/workout_selector"
+            android:button="@null"
+            android:scaleType="centerInside" />
+
+    </RadioGroup>
+
+    <View
+        android:id="@+id/divider"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="3dp"
+        android:layout_marginBottom="1dp"
+        android:background="?android:attr/listDivider"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
