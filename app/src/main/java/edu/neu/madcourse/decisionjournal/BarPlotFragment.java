@@ -182,13 +182,13 @@ public class BarPlotFragment extends Fragment {
             for (Record record : currDay) {
                 switch (record.emotion) {
                     case HAPPY:
-                        counts[0] += 1.0f;
+                        counts[2] += 1.0f;
                         break;
                     case NEUTRAL:
                         counts[1] += 1.0f;
                         break;
                     case SAD:
-                        counts[2] += 1.0f;
+                        counts[0] += 1.0f;
                         break;
                     default:
                         Log.e(TAG, "unrecognized emotion");
