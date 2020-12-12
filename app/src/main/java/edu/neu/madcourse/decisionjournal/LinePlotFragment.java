@@ -31,11 +31,13 @@ import java.sql.Date;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Calendar;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.TimeZone;
 
 import edu.neu.madcourse.decisionjournal.dao.AsyncRecordRepository;
 import edu.neu.madcourse.decisionjournal.model.DecisionEnum;
@@ -182,16 +184,45 @@ public class LinePlotFragment extends Fragment {
             description.setTextColor(Color.rgb(26, 35, 126));
             lineChart.setDescription(description);
 
+
             XAxis xAxis = lineChart.getXAxis();
-            xAxis.setValueFormatter(new IndexAxisValueFormatter(dates));
-//            xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
+            xAxis.setValueFormatter(new IndexAxisValueFormatter(getLabels()));
+            xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
 
 
             Legend legend = lineChart.getLegend();
+//            legend.setStackSpace(10);
+//            legend.setFormLineWidth(100);
+            legend.setEnabled(true);
             legend.setTextSize(15);
+            legend.setWordWrapEnabled(true);
+            legend.setXEntrySpace(18);
+            legend.setForm(Legend.LegendForm.CIRCLE);
+            legend.setMaxSizePercent(0.90f);
             lineChart.invalidate();
 
         });
+    }
+
+    private static final double MILLIS_IN_A_DAY = 1000 * 60 * 60 * 24;
+
+    private String[] getLabels() {
+        Date day = Date.valueOf(LocalDate.now().toString());
+        String[] xLabel = new String[7];
+        //https://stackoverflow.com/questions/7672597/how-to-get-timezone-from-android-mobile
+        Calendar calendar = Calendar.getInstance(TimeZone.getDefault());
+
+        for (int i = 0; i < 7; i++) {
+            calendar.setTime(day);
+            int month = calendar.get(Calendar.MONTH) + 1;
+            int dayNum = calendar.get(Calendar.DAY_OF_MONTH);
+
+            xLabel[6 - i] = dayNum + "/" + month;
+            // offset to previous day
+            day = new Date(day.getTime() - (long) MILLIS_IN_A_DAY);
+        }
+
+        return xLabel;
     }
 
 }
