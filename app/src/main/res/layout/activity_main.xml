@@ -76,6 +76,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@android:color/background_light"
+        android:backgroundTint="#F9FBE7"
         android:padding="5dp"
         app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior" />
 
@@ -91,20 +92,24 @@
 
     <Button
         android:id="@+id/cat_dialog_bn"
+        style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|left"
         android:layout_margin="20dp"
+        android:backgroundTint="#BA68C8"
         android:onClick="onClick"
         android:text="Cat button" />
 
     <Button
         android:id="@+id/plot_bn"
+        style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
         android:layout_marginLeft="160dp"
         android:layout_marginBottom="20dp"
+        android:backgroundTint="#7986CB"
         android:onClick="gotoPlot"
         android:text="Plot" />
 
