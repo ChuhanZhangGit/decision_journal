@@ -9,37 +9,12 @@
     tools:context=".CreateActivity">
 
     <TextView
-        android:id="@+id/decision_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginBottom="1dp"
-        android:text="Decision Comment"
-        app:layout_constraintBottom_toTopOf="@+id/decision_comment"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <EditText
-        android:id="@+id/decision_comment"
-        style="@android:style/Widget.Material.EditText"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="10dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:singleLine="false"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
         android:id="@+id/cat_dialog"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
         android:text="How's your day ?"
-        app:layout_constraintBottom_toTopOf="@+id/decision_title"
+        app:layout_constraintBottom_toTopOf="@+id/divider"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.2" />
@@ -49,7 +24,7 @@
         android:layout_width="200dp"
         android:layout_height="0dp"
         android:layout_marginBottom="5dp"
-        app:layout_constraintBottom_toTopOf="@+id/decision_title"
+        app:layout_constraintBottom_toTopOf="@+id/divider"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cat_dialog"
         app:srcCompat="@drawable/cat" />
@@ -62,80 +37,7 @@
         android:layout_marginTop="5dp"
         android:text="Pick your decision"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/decision_comment" />
-
-    <!--    <ImageButton-->
-    <!--        android:id="@+id/decision_eat"-->
-    <!--        android:layout_width="0dp"-->
-    <!--        android:layout_height="50dp"-->
-    <!--        android:layout_marginTop="5dp"-->
-    <!--        android:backgroundTint="#00FFFFFF"-->
-    <!--        android:scaleType="fitCenter"-->
-    <!--        app:layout_constraintEnd_toStartOf="@+id/decision_study"-->
-    <!--        app:layout_constraintStart_toStartOf="parent"-->
-    <!--        app:layout_constraintTop_toBottomOf="@+id/fast_pick_label"-->
-    <!--        app:srcCompat="@drawable/eat" />-->
-
-    <!--    <ImageButton-->
-    <!--        android:id="@+id/decision_study"-->
-    <!--        android:layout_width="0dp"-->
-    <!--        android:layout_height="0dp"-->
-    <!--        android:backgroundTint="#00FFFFFF"-->
-    <!--        android:scaleType="fitCenter"-->
-    <!--        app:layout_constraintBottom_toBottomOf="@+id/decision_eat"-->
-    <!--        app:layout_constraintEnd_toStartOf="@+id/decision_shop"-->
-    <!--        app:layout_constraintStart_toEndOf="@+id/decision_eat"-->
-    <!--        app:layout_constraintTop_toTopOf="@+id/decision_eat"-->
-    <!--        app:srcCompat="@drawable/study" />-->
-
-    <!--    <ImageButton-->
-    <!--        android:id="@+id/decision_shop"-->
-    <!--        android:layout_width="0dp"-->
-    <!--        android:layout_height="0dp"-->
-    <!--        android:backgroundTint="#00FFFFFF"-->
-    <!--        android:scaleType="fitCenter"-->
-    <!--        app:layout_constraintBottom_toBottomOf="@+id/decision_study"-->
-    <!--        app:layout_constraintEnd_toEndOf="parent"-->
-    <!--        app:layout_constraintStart_toEndOf="@+id/decision_study"-->
-    <!--        app:layout_constraintTop_toTopOf="@+id/decision_study"-->
-    <!--        app:srcCompat="@drawable/shop" />-->
-
-    <!--    <ImageButton-->
-    <!--        android:id="@+id/decision_game"-->
-    <!--        android:layout_width="0dp"-->
-    <!--        android:layout_height="50dp"-->
-    <!--        android:layout_marginTop="5dp"-->
-    <!--        android:backgroundTint="#00FFFFFF"-->
-    <!--        android:scaleType="fitCenter"-->
-    <!--        app:layout_constraintEnd_toStartOf="@+id/decision_music"-->
-    <!--        app:layout_constraintStart_toStartOf="parent"-->
-    <!--        app:layout_constraintTop_toBottomOf="@+id/decision_eat"-->
-    <!--        app:srcCompat="@drawable/game" />-->
-
-    <!--    <ImageButton-->
-    <!--        android:id="@+id/decision_music"-->
-    <!--        android:layout_width="0dp"-->
-    <!--        android:layout_height="50dp"-->
-    <!--        android:backgroundTint="#00FFFFFF"-->
-    <!--        android:scaleType="fitCenter"-->
-    <!--        app:layout_constraintBottom_toBottomOf="@+id/decision_game"-->
-    <!--        app:layout_constraintEnd_toStartOf="@+id/decision_workout"-->
-    <!--        app:layout_constraintStart_toEndOf="@+id/decision_game"-->
-    <!--        app:layout_constraintTop_toTopOf="@+id/decision_game"-->
-    <!--        app:srcCompat="@drawable/entertain" />-->
-
-    <!--    <ImageButton-->
-    <!--        android:id="@+id/decision_workout"-->
-    <!--        android:layout_width="0dp"-->
-    <!--        android:layout_height="0dp"-->
-    <!--        android:backgroundTint="#00FFFFFF"-->
-    <!--        android:scaleType="fitCenter"-->
-    <!--        app:layout_constraintBottom_toBottomOf="@+id/decision_music"-->
-    <!--        app:layout_constraintEnd_toEndOf="parent"-->
-    <!--        app:layout_constraintStart_toEndOf="@+id/decision_music"-->
-    <!--        app:layout_constraintTop_toTopOf="@+id/decision_music"-->
-    <!--        app:srcCompat="@drawable/workout" />-->
-    <!--    -->
+        app:layout_constraintTop_toBottomOf="@+id/divider" />
 
 
     <Button
@@ -147,7 +49,7 @@
         android:onClick="onClick"
 
         android:text="Add"
-        app:layout_constraintBottom_toTopOf="@+id/decision_comment"
+        app:layout_constraintBottom_toBottomOf="@+id/emotion_radioGroup"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/emotion_radioGroup"
         app:layout_constraintTop_toTopOf="@+id/emotion_radioGroup" />
@@ -157,7 +59,8 @@
         android:layout_width="wrap_content"
         android:layout_height="0dp"
         android:layout_marginTop="5dp"
-        app:layout_constraintBottom_toTopOf="@+id/decision_comment"
+        android:layout_marginBottom="5dp"
+        app:layout_constraintBottom_toTopOf="@+id/divider"
         app:layout_constraintEnd_toStartOf="@+id/decision_add"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/cat_icon"
@@ -311,5 +214,17 @@
             android:scaleType="centerInside" />
 
     </RadioGroup>
+
+    <View
+        android:id="@+id/divider"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="3dp"
+        android:layout_marginBottom="1dp"
+        android:background="?android:attr/listDivider"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
