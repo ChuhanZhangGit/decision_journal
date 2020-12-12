@@ -203,4 +203,9 @@ public class MainActivity extends AppCompatActivity {
             catDialog.show(getSupportFragmentManager(), "cat dialog");
         }
     }
+
+    public void gotoPlot(View view){
+        Intent intent = new Intent(this, PlotActivity.class);
+        startActivity(intent);
+    }
 }
