@@ -99,6 +99,7 @@ public class MainActivity extends AppCompatActivity {
         private float lastAcceleration = 0;
         private float currAcceleration = 0;
         private int THRESHOLD = 12;
+        private boolean firstReading = true;
 
         @Override
         public void onSensorChanged(SensorEvent event) {
@@ -123,11 +124,12 @@ public class MainActivity extends AppCompatActivity {
             currAcceleration = ax * ax + ay * ay + az * az;
             Log.i(TAG, String.format("Current accelation: %f, previous acceleration: %f",
                     currAcceleration, lastAcceleration));
-            if (currAcceleration - lastAcceleration > THRESHOLD * THRESHOLD) {
+            if (!firstReading && currAcceleration - lastAcceleration > THRESHOLD * THRESHOLD) {
                 Log.i(TAG, String.format("Triggered when Current accelation: %f, previous acceleration: %f",
                         currAcceleration, lastAcceleration));
                 launchCatDialog();
             }
+            firstReading = false;
         }
 
         @Override
