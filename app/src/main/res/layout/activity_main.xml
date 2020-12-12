@@ -63,7 +63,19 @@
                         android:textSize="20dp"
                         android:typeface="monospace"
                         android:textColor="@color/white"
-                        android:layout_weight="4"/>
+                        android:layout_weight="6"/>
+
+                    <ImageButton
+                        android:id="@+id/cat_dialog_bn"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_margin="10dp"
+                        android:scaleType="fitCenter"
+                        android:background="@null"
+                        android:src="@drawable/cat_appbar"
+                        android:layout_weight="1"
+                        android:onClick="onClick"
+                        />
 
                     <ImageButton
                         android:id="@+id/plot_activity_bn"
@@ -104,28 +116,6 @@
         android:tint="@android:color/white"
         app:srcCompat="@android:drawable/ic_input_add" />
 
-    <Button
-        android:id="@+id/cat_dialog_bn"
-        style="@style/Widget.AppCompat.Button.Colored"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|left"
-        android:layout_margin="20dp"
-        android:backgroundTint="#BA68C8"
-        android:onClick="onClick"
-        android:text="Cat button" />
-
-    <Button
-        android:id="@+id/plot_bn"
-        style="@style/Widget.AppCompat.Button.Colored"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
-        android:layout_marginLeft="160dp"
-        android:layout_marginBottom="20dp"
-        android:backgroundTint="#7986CB"
-        android:onClick="gotoPlot"
-        android:text="Plot" />
 
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
