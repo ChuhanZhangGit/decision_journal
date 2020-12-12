@@ -95,23 +95,25 @@ public class BarPlotFragment extends Fragment {
     public void onResume() {
         super.onResume();
 
-        BarDataSet barDataSet1 = new BarDataSet(dataStacked(), "Emotion counts");
+        Date day = Date.valueOf(LocalDate.now().toString());
+        recordRepository.getSevenDays(day).observe(this, records -> {
+            BarDataSet barDataSet1 = new BarDataSet(genDataStack(records, day), "Emotion counts");
 
-        barDataSet1.setStackLabels(new String[]{"Sad", "Neutral", "Happy"});
-        barDataSet1.setColors(getColors());
-        BarData barData = new BarData();
-        barData.addDataSet(barDataSet1);
+            barDataSet1.setStackLabels(new String[]{"Sad", "Neutral", "Happy"});
+            barDataSet1.setColors(getColors());
+            BarData barData = new BarData();
+            barData.addDataSet(barDataSet1);
 
-        getData();
+            XAxis xAxis = barChart.getXAxis();
+            xAxis.setValueFormatter(new IndexAxisValueFormatter(getLabels()));
+            xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
+            xAxis.setGranularity(1);
+            xAxis.setGranularityEnabled(true);
 
-        XAxis xAxis = barChart.getXAxis();
-        xAxis.setValueFormatter(new IndexAxisValueFormatter(getLabels()));
-        xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
-        xAxis.setGranularity(1);
-        xAxis.setGranularityEnabled(true);
+            barChart.setData(barData);
+            barChart.invalidate();
+        });
 
-        barChart.setData(barData);
-        barChart.invalidate();
 
     }
 
@@ -166,7 +168,7 @@ public class BarPlotFragment extends Fragment {
                         Log.e(TAG, "unrecognized emotion");
                 }
             }
-            Log.i(TAG, String.format("Emotion counts is [%f, %f, %f]", counts[0],counts[1],counts[2]));
+            Log.i(TAG, String.format("Emotion counts is [%f, %f, %f]", counts[0], counts[1], counts[2]));
             dataStack.add(new BarEntry(i, counts));
         }
         return dataStack;
@@ -177,7 +179,9 @@ public class BarPlotFragment extends Fragment {
         for (int i = 0; i < len; i++) {
             partitions.add(new ArrayList<>());
         }
+        Log.e("partitions", partitions.size() + "");
         for (Record record : records) {
+            Log.e("record", record.date.toString() + " " + record.decision);
             int idx = dateToIdx(record.date, startDate);
             if (idx == -1) {
                 Log.e(TAG, "idx isn't in 7 days");
@@ -190,7 +194,8 @@ public class BarPlotFragment extends Fragment {
     }
 
     private int dateToIdx(Date currDate, Date startDate) {
-        int idx = (int) (currDate.getTime() - startDate.getTime()) / DAY_IN_MILLI;
+        int idx = 6 + (int) (currDate.getTime() - startDate.getTime()) / DAY_IN_MILLI;
+        Log.e("Index", startDate.toString() + "->" + currDate.toString() + ":" + idx);
         if (idx >= 0 && idx < 7) return idx;
         return -1;
     }
