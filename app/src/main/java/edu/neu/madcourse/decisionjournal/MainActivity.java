@@ -157,6 +157,7 @@ public class MainActivity extends AppCompatActivity {
     // Observe new date when selected date changes.
     private void handleDateChanged() {
         Date currDate = Date.valueOf(selectedDate.toString());
+        Log.v("Date format",currDate.toString());
         recordRepository.getRecordOnDate(currDate).observe(this, records -> {
             recordRecyclerAdapter.submitList(records);
         });

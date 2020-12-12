@@ -18,8 +18,8 @@ import edu.neu.madcourse.decisionjournal.model.Record;
  * database operation which will prevent the operation freeze UI thread.
  */
 public class AsyncRecordRepository {
-    private  AppDatabase database;
-    private  RecordDao recordDao;
+    private AppDatabase database;
+    private RecordDao recordDao;
 //    private static volatile AsyncRecordRepository INSTANCE;
 
     public AsyncRecordRepository(Context application) {
@@ -43,15 +43,23 @@ public class AsyncRecordRepository {
         Date dayStart = Date.valueOf(dateOnly);
 
         // hard coded day end in millisecond
-        Date dayEnd = new Date(dayStart.getTime() + 24*60*60*1000 -1);
+        Date dayEnd = new Date(dayStart.getTime() + 24 * 60 * 60 * 1000 - 1);
         return recordDao.getRecordBetweenDate(dayStart, dayEnd);
     }
 
+    public List<Record> getRecordBetweenWholeDate(Date date) {
+        // date toString leave only date field.
+        String dateOnly = date.toString();
 
+        Date dayStart = Date.valueOf(dateOnly);
 
+        // hard coded day end in millisecond
+        Date dayEnd = new Date(dayStart.getTime() + 24 * 60 * 60 * 1000 - 1);
+        return recordDao.getRecordBetweenDateTest(dayStart, dayEnd);
+    }
 
     public void insert(Record record) {
-        AppDatabase.executor.execute(()-> {
+        AppDatabase.executor.execute(() -> {
             recordDao.insert(record);
         });
     }

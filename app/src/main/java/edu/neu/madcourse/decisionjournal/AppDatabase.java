@@ -35,6 +35,7 @@ public abstract class AppDatabase extends RoomDatabase {
     private static final int NUMBER_OF_THREADS = 4;
     private static Date test_date = Date.valueOf(LocalDate.of(2020, 12, 9).toString());
     private static Date today = Date.valueOf(LocalDate.now().toString());
+    private static final double MILLIS_IN_A_DAY = 1000 * 60 * 60 * 24;
     public static final ExecutorService executor =
             Executors.newFixedThreadPool(NUMBER_OF_THREADS);
 
@@ -123,7 +124,7 @@ public abstract class AppDatabase extends RoomDatabase {
         }
     };
 
-    private static final double MILLIS_IN_A_DAY = 1000 * 60 * 60 * 24;
+
 
     private static long randomOffset() {
         return (long) Math.floor(Math.random() * MILLIS_IN_A_DAY);
