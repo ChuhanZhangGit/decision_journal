@@ -18,8 +18,10 @@
 
     <Button
         android:id="@+id/btn_plot_bar"
+        style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:backgroundTint="#4DB6AC"
         android:text="Bar Chart"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@id/line_to_home"
@@ -28,9 +30,11 @@
 
     <Button
         android:id="@+id/line_to_home"
+        style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
 
+        android:layout_height="wrap_content"
+        android:backgroundTint="#E57373"
         android:text="Home"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

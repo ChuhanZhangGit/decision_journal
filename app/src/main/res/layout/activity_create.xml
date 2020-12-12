@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:autofillHints="decision"
+    android:background="#F9FBE7"
     tools:context=".CreateActivity">
 
     <TextView
@@ -142,7 +143,7 @@
         style="@android:style/Widget.Material.Button.Colored"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="#EC407A"
+        android:background="#EF5350"
         android:onClick="onClick"
 
         android:text="Add"

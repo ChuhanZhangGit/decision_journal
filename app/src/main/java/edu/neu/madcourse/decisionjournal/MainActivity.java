@@ -156,6 +156,7 @@ public class MainActivity extends AppCompatActivity {
     // Observe new date when selected date changes.
     private void handleDateChanged() {
         Date currDate = Date.valueOf(selectedDate.toString());
+        Log.v("Date format",currDate.toString());
         recordRepository.getRecordOnDate(currDate).observe(this, records -> {
             recordRecyclerAdapter.submitList(records);
         });
@@ -203,5 +204,10 @@ public class MainActivity extends AppCompatActivity {
                 !catDialog.getDialog().isShowing()) {
             catDialog.show(getSupportFragmentManager(), "cat dialog");
         }
+    }
+
+    public void gotoPlot(View view){
+        Intent intent = new Intent(this, PlotActivity.class);
+        startActivity(intent);
     }
 }

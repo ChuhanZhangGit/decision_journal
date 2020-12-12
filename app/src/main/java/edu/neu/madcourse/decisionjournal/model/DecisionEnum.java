@@ -37,7 +37,7 @@ public enum  DecisionEnum {
     public String toString() {
         switch (this) {
             case EAT: return "Eat";
-            case STUDY: return "Stduy";
+            case STUDY: return "Study";
             case SHOP: return "Shop";
             case GAME: return "Game";
             case MUSIC: return  "Music";
