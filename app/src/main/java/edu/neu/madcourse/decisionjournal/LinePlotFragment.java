@@ -95,7 +95,7 @@ public class LinePlotFragment extends Fragment {
 
         lineChart = view.findViewById(R.id.line_emotion);
 
-        LineDataSet lineDataSet1 = new LineDataSet(dataValues1(), "Data Set 1");
+//        LineDataSet lineDataSet1 = new LineDataSet(dataValues1(), "Data Set 1");
 //        LineDataSet lineDataSet2 = new LineDataSet(dataValues2(), "Data Set 2");
 //
 //        lineDataSet1.setColor(ColorTemplate.JOYFUL_COLORS[0]);
@@ -158,11 +158,10 @@ public class LinePlotFragment extends Fragment {
             Collections.sort(records, (a, b) -> a.date.compareTo(b.date));
 
             Date day_temp = Date.valueOf(LocalDate.now().toString());
-            day_temp = new Date(day_temp.getTime() + (long) MILLIS_IN_A_DAY);
             for (int i = 0; i < 7; i++) {
-                indexMap.put(day_temp.toString(), 6-i);
+                indexMap.put(day_temp.toString(), 6 - i);
                 day_temp = new Date(day_temp.getTime() - (long) MILLIS_IN_A_DAY);
-                Log.v("date:",day_temp.toString());
+                Log.v("date:", day_temp.toString());
             }
 
 
@@ -195,7 +194,7 @@ public class LinePlotFragment extends Fragment {
                 for (int i = 0; i < 6; i++) {
                     data[i].add(new Entry(indexMap.get(date), decisionMap[i].getOrDefault(date, 0)));
                 }
-                Log.v("check array", "" + data[0].size());
+                Log.v("check array", "" + data[0].toString());
             }
 
             int[] colors = new int[]{
@@ -230,6 +229,7 @@ public class LinePlotFragment extends Fragment {
             XAxis xAxis = lineChart.getXAxis();
             xAxis.setValueFormatter(new IndexAxisValueFormatter(dates));
 //            xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
+
 
             Legend legend = lineChart.getLegend();
             legend.setTextSize(15);
