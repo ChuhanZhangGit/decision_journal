@@ -84,6 +84,19 @@ public class MainActivity extends AppCompatActivity {
         Log.i(TAG, "after onCreate");
     }
 
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        sensorManager.unregisterListener(mSensorListener);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        sensorManager.registerListener(mSensorListener, sensor, SensorManager.SENSOR_DELAY_NORMAL);
+    }
+
     /**
      * Listener for accelerometer sensor which listen to device shakes.
      */
