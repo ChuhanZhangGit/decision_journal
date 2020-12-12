@@ -31,4 +31,5 @@ public interface RecordDao {
 
     @Query("SELECT * FROM records WHERE date BETWEEN :dayStart AND :dayEnd")
     List<Record> getRecordBetweenDateTest(Date dayStart, Date dayEnd);
+
 }

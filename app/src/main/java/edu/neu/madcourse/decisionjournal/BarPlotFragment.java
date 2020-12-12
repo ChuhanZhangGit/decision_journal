@@ -14,6 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.github.mikephil.charting.charts.BarChart;
+import com.github.mikephil.charting.components.Description;
 import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.data.BarData;
 import com.github.mikephil.charting.data.BarDataSet;
@@ -142,16 +143,14 @@ public class BarPlotFragment extends Fragment {
         BarEntry[] entries = new BarEntry[7];
         Date day = Date.valueOf(LocalDate.now().toString());
 
-        for (int i = 0; i < 7; i++) {
-            Log.v("Read", " " + i);
-            recordRepository.getRecordOnDate(day).observe(this, records -> {
-                int size = records == null ? 0 : records.size();
-                Log.v("ReadDay", " " + size + " ");
+        recordRepository.getSevenDays(day).observe(this, records -> {
+            int size = records == null ? 0 : records.size();
+            Log.v("ReadDay", " " + size + " ");
+            for (Record record : records) {
+                Log.v("r:", record.date.toString() + " " + record.decision);
+            }
+        });
 
-            });
-
-            day = new Date(day.getTime() - (long) MILLIS_IN_A_DAY);
-        }
         ArrayList<BarEntry> data = new ArrayList<>();
         return data;
     }
