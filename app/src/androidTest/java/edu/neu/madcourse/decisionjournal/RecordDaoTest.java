@@ -36,7 +36,7 @@ public class RecordDaoTest {
     private final Date nextDay = Date.valueOf(LocalDate.of(2000,1,2).toString());
     private final Date sameDayDiffTime = new Date(date.getTime() + 400000);
     private final Record record1 = new Record(DecisionEnum.WORKOUT, EmoEnum.HAPPY, date);
-    private final Record record2 = new Record(DecisionEnum.EAT, EmoEnum.HAPPY, sameDayDiffTime);
+    private final Record record2 = new Record(DecisionEnum.EAT, EmoEnum.SAD, sameDayDiffTime);
 
     @Before
     public void createDb() {
@@ -60,5 +60,16 @@ public class RecordDaoTest {
 
         List<Record> records = recordDao.getRecordBetweenDateTest(date, nextDay);
         Assert.assertEquals(2, records.size());
+    }
+
+    @Test
+    public void orderByTest() {
+        recordDao.insert(record2);
+        recordDao.insert(record1);
+
+        List<Record> records = recordDao.getRecordBetweenDateTest(date, nextDay);
+        Assert.assertEquals(2, records.size());
+        Assert.assertEquals(record1.decision, records.get(0).decision);
+        Assert.assertEquals(record2.decision, records.get(1).decision);
     }
 }
